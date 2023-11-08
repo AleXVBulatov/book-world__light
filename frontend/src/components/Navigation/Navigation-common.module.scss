@@ -1,9 +1,8 @@
 @import "../../scss/variables.scss";
 .nav {
   height: auto;
-  background-color: $color-primary;
 
-  .nav__list {
+  .menu {
     display: flex;
     justify-content: space-between;
     align-items: center;

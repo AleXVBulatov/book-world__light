@@ -3,6 +3,8 @@ body {
   font-family: $default-font;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: $color-background;
 }
 
 .container {
@@ -13,22 +15,42 @@ body {
   color: $color-main;
 }
 
-.link {
+// navigation header:
+.headerLink {
   display: block;
   padding: 15px 20px;
   color: #fff;
   font-weight: 500;
 }
-.link:hover {
+.headerLink:hover {
   background-color: rgb(145, 111, 182);
 }
 
-.activeLink {
+.headerActiveLink {
   display: block;
   padding: 15px 20px;
   color: #fff;
   font-weight: 500;
   background-color: $color-secondary;
+}
+
+// navigation footer:
+.footerLink {
+  display: block;
+  padding: 15px 20px;
+  color: $color-background;
+  font-weight: 500;
+}
+.footerLink:hover {
+  background-color: #444444;
+}
+
+.footerActiveLink {
+  display: block;
+  padding: 15px 20px;
+  color: $color-background;
+  font-weight: 500;
+  background-color: #444444;
 }
 
 .none {

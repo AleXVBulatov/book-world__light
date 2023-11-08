@@ -18,8 +18,8 @@ function App() {
       <Routes>
         <Route path={ROUTES.HOME} element={<MainLayout />}>
           <Route index={true} element={<Home />} />
-          <Route path={ROUTES.BOOKS} element={<Books />} />
           <Route path={ROUTES.CATEGORY} element={<Category />} />
+          <Route path={ROUTES.BOOKS} element={<Books />} />
           <Route path={ROUTES.ABOUT} element={<About />} />
           <Route path={ROUTES.CONTACTS} element={<Contacts />} />
           <Route path={ROUTES.SERVICE} element={<Service />} />

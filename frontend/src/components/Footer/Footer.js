@@ -6,56 +6,47 @@ import { AiFillMail } from "react-icons/ai";
 import styles from "./Footer.module.scss";
 import ROUTES from "../../utils/routes";
 import logo from "../../images/logo/logo-footer.png";
+import Navigation from "../Navigation/Navigation";
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
+      <Navigation position="footer" />
+
       <div className="container">
-        <nav className={styles.nav}>
-          <ul className={styles.nav__list}>
-            <div className={styles.row}>
-              <li>
-                <Link to={ROUTES.HOME}>Главная</Link>
-              </li>
-              <li>
-                <Link to={ROUTES.BOOKS}>Книги</Link>
-              </li>
-              <li>
-                <Link to={ROUTES.CATEGORY}>Катагории</Link>
-              </li>
-              <li>
-                <Link to={ROUTES.ABOUT}>Про компанию</Link>
-              </li>
-              <li>
-                <Link to={ROUTES.CONTACTS}>Контакты</Link>
-              </li>
-              <li>
-                <Link to={ROUTES.SERVICE}>Доставка и оплата</Link>
-              </li>
-            </div>
-          </ul>
-        </nav>
+        {/* <nav className={styles.nav}>
+          <Link to={ROUTES.HOME}>Главная</Link>
+          <Link to={ROUTES.CATEGORY}>Катагории</Link>
+          <Link to={ROUTES.BOOKS}>Книги</Link>
+          <Link to={ROUTES.ABOUT}>О нас</Link>
+          <Link to={ROUTES.CONTACTS}>Контакты</Link>
+          <Link to={ROUTES.SERVICE}>Доставка и оплата</Link>
+        </nav> */}
+
         <div className={styles.line}></div>
+
         <div className={styles.row}>
           <div className={styles.logo}>
             <Link to={ROUTES.HOME}>
               <img src={logo} alt="Logo" />
             </Link>
           </div>
+
           <span>Developed by Alexey</span>
+
           <div className={styles.socials}>
-            <Link to="https://www.linkedin.com/in/alexey-bulatov/" target="_blanc">
-              <BsLinkedin color="b8b8b8" size={20} />
-            </Link>
-            <Link to="https://github.com/AleXVBulatov" target="_blanc">
-              <BsGithub color="b8b8b8" size={20} />
-            </Link>
-            <Link to="https://t.me/AleXVBulatov" target="_blanc">
-              <BsTelegram color="b8b8b8" size={20} />
-            </Link>
-            <Link to="mailto:bulatov.a.v.89@gmail.com" target="_blanc">
-              <AiFillMail color="b8b8b8" size={20} />
-            </Link>
+            <a href="https://www.linkedin.com/in/alexey-bulatov/" target="_blanc">
+              <BsLinkedin size={20} />
+            </a>
+            <a href="https://github.com/AleXVBulatov" target="_blanc">
+              <BsGithub size={20} />
+            </a>
+            <a href="https://t.me/AleXVBulatov" target="_blanc">
+              <BsTelegram size={20} />
+            </a>
+            <a href="mailto:bulatov.a.v.89@gmail.com" target="_blanc">
+              <AiFillMail size={20} />
+            </a>
           </div>
         </div>
       </div>

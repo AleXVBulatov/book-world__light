@@ -1,124 +1,123 @@
 @import "../../scss/variables.scss";
 
 .header {
-  .top {
-    .row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: $headerBG;
 
-      .logo {
-        height: 60px;
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
 
-        img {
-          height: 100%;
-          object-fit: contain;
-        }
+    .logo {
+      height: 60px;
+
+      img {
+        height: 100%;
+        object-fit: contain;
       }
+    }
+
+    .form {
+      position: relative;
+      width: 400px;
+      height: 40px;
 
       .input {
-        position: relative;
-        width: 400px;
-        line-height: 40px;
+        height: 100%;
 
         input {
           width: 100%;
-          height: 40px;
-          background-color: $color-background;
+          height: 100%;
+          background-color: $headerInputBG;
           border-radius: 3px;
           padding: 5px 17px;
-          border: 1px solid #ececec;
+          border: 1px solid $headerInputBorder;
         }
         input::placeholder {
           color: #b8b8b8;
         }
+      }
 
-        .icon-search {
+      .icon-search {
+        position: absolute;
+        top: 50%;
+        right: 17px;
+        transform: translateY(-50%);
+      }
+
+      .box {
+        position: absolute;
+        width: 100%;
+        min-height: 40px;
+        height: auto;
+        border-radius: 3px;
+        padding: 5px 17px;
+        background-color: $headerInputBox;
+      }
+    }
+
+    .info {
+      .icon-telephone {
+        position: relative;
+        top: 3px;
+        right: 5px;
+      }
+    }
+
+    .login {
+      .icon-login {
+        position: relative;
+        top: 3px;
+        right: 5px;
+      }
+      a {
+        color: $headerLinksColor;
+
+        &:active {
+          color: $headerLinksColorActive;
+        }
+      }
+    }
+
+    .account {
+      height: 100%;
+
+      .row {
+        // остальные параметры берутся из .row выше
+        width: 70px;
+        height: 100%;
+        padding-right: 10px;
+
+        a {
+          color: $headerLinksColor;
+
+          &:active {
+            color: $headerLinksColorActive;
+          }
+        }
+
+        .groups {
+          position: relative;
+        }
+
+        .count {
           position: absolute;
-          top: 50%;
-          right: 17px;
-          transform: translateY(-50%);
-        }
-      }
+          bottom: 70%;
+          left: 70%;
+          display: block;
+          width: 16px;
+          height: 16px;
 
-      .info {
-        .icon-telephone {
-          position: relative;
-          top: 3px;
-          right: 5px;
-        }
-      }
+          text-align: center;
+          line-height: 16px;
+          border-radius: 50%;
+          font-size: 10px;
 
-      .group__login {
-        .icon-login {
-          position: relative;
-          top: 3px;
-          right: 5px;
-        }
-        a {
-          color: $color-main;
-        }
-        a:active {
-          color: $color-primary;
-        }
-      }
-
-      .group__row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 60px;
-
-        a {
-          color: $color-main;
-        }
-
-        .group__favourite {
-          position: relative;
-
-          .group__qty {
-            position: absolute;
-            bottom: 50%;
-            left: 50%;
-            display: block;
-            width: 16px;
-            height: 16px;
-
-            text-align: center;
-            line-height: 16px;
-            border-radius: 50%;
-            font-size: 10px;
-
-            background-color: $color-secondary;
-          }
-
-          .icon-favourite {
-          }
-        }
-        .group__cart {
-          position: relative;
-
-          .group__qty {
-            position: absolute;
-            bottom: 50%;
-            left: 50%;
-            display: block;
-            width: 16px;
-            height: 16px;
-
-            text-align: center;
-            line-height: 16px;
-            border-radius: 50%;
-            font-size: 10px;
-
-            background-color: $color-secondary;
-          }
-
-          .icon-cart {
-            position: relative;
-            bottom: 1px;
-          }
+          background-color: $headerAccountCount;
         }
       }
     }

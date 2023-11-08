@@ -1,3 +1,4 @@
+// clobal variables:
 $color_1: #18161a;
 $color_2: #673d95;
 $color_3: #ff9e60;
@@ -17,4 +18,19 @@ $color-primary: $color_2;
 $color-secondary: $color_3;
 $color-background: $color_4;
 
-$bgColorFooter: #333333;
+// header variables:
+$headerBG: #fff;
+$headerBorder: $color-background; // #ececec
+$headerInputBG: $color-background;
+$headerInputBorder: #ececec;
+$headerInputBox: $color-background;
+$headerLinksColor: $color-main;
+$headerLinksColorActive: $color-primary;
+$headerAccountCount: $color-secondary;
+
+// footer variables:
+$footerBG: #333333;
+$footerTextColor: $color-background;
+$footerLinksColor: $color-background;
+$footerNavColorHover: #444444;
+$footerLineColor: $color-background;
