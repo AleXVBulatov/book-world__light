@@ -1,0 +1,35 @@
+[
+  {
+    "author": "Брэдбери Рэй",
+    "title": "451' по Фаренгейту",
+    "year": 1953,
+    "img": "https://content2.rozetka.com.ua/goods/images/big/337429203.jpg",
+    "genre": "Фантастика",
+    "pages": 256,
+    "cover": "hard",
+    "price": 300,
+    "language": "russian"
+  },
+  {
+    "author": "Брэдбери Рэй",
+    "title": "451' по Фаренгейту",
+    "year": 1953,
+    "img": "https://balka-book.com/files/2021/08_24/15_17/u_files_store_6_345.jpg",
+    "genre": "Фантастика",
+    "pages": 272,
+    "cover": "soft",
+    "price": 300,
+    "language": "ukrainian"
+  },
+  {
+    "author": "Брэдбери Рэй",
+    "title": "451' по Фаренгейту",
+    "year": 1953,
+    "img": "https://content2.rozetka.com.ua/goods/images/big/252848068.jpg",
+    "genre": "Фантастика",
+    "pages": 256,
+    "cover": "soft",
+    "price": 142,
+    "language": "english"
+  }
+]
