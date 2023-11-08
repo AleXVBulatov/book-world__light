@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: $default-font;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  margin: 0 auto;
+  padding: $content-padding;
+  max-width: $content-width;
+  font-size: $font-size-14;
+  color: $color-main;
+}
+
+.link {
+  display: block;
+  padding: 15px 20px;
+  color: #fff;
+  font-weight: 500;
+}
+.link:hover {
+  background-color: rgb(145, 111, 182);
+}
+
+.activeLink {
+  display: block;
+  padding: 15px 20px;
+  color: #fff;
+  font-weight: 500;
+  background-color: $color-secondary;
+}
+
+.none {
+  display: none;
+}
