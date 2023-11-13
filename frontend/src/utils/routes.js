@@ -1,12 +1,13 @@
 const ROUTES = {
   HOME: "/",
+  CART: "cart",
+  FAVOURITE: "favourite",
+  CATEGORY: "categories/:id",
+
   BOOKS: "books",
-  CATEGORY: "category",
   ABOUT: "about",
   CONTACTS: "contacts",
   SERVICE: "service",
-  CART: "cart",
-  FAVOURITE: "favourite",
   LOGIN: "login",
   NOTFOUND: "not-found",
 };

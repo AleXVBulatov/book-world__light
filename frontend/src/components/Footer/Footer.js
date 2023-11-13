@@ -6,23 +6,11 @@ import { AiFillMail } from "react-icons/ai";
 import styles from "./Footer.module.scss";
 import ROUTES from "../../utils/routes";
 import logo from "../../images/logo/logo-footer.png";
-import Navigation from "../Navigation/Navigation";
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <Navigation position="footer" />
-
       <div className="container">
-        {/* <nav className={styles.nav}>
-          <Link to={ROUTES.HOME}>Главная</Link>
-          <Link to={ROUTES.CATEGORY}>Катагории</Link>
-          <Link to={ROUTES.BOOKS}>Книги</Link>
-          <Link to={ROUTES.ABOUT}>О нас</Link>
-          <Link to={ROUTES.CONTACTS}>Контакты</Link>
-          <Link to={ROUTES.SERVICE}>Доставка и оплата</Link>
-        </nav> */}
-
         <div className={styles.line}></div>
 
         <div className={styles.row}>

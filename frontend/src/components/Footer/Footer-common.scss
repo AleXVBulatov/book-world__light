@@ -3,22 +3,6 @@
 .footer {
   background-color: $footerBG;
 
-  // .nav {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-
-  //   a {
-  //     display: block;
-  //     padding: 15px 20px;
-  //     color: $footerNavColor;
-
-  //     &:hover {
-  //       background-color: $footerNavColorHover;
-  //     }
-  //   }
-  // }
-
   .line {
     border-bottom: 1px solid $footerLineColor;
   }
@@ -54,3 +38,19 @@
     }
   }
 }
+
+// .nav {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+
+//   a {
+//     display: block;
+//     padding: 15px 20px;
+//     color: $footerNavColor;
+
+//     &:hover {
+//       background-color: $footerNavColorHover;
+//     }
+//   }
+// }

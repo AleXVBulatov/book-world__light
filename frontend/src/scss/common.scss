@@ -4,53 +4,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: $color-background;
+  // background-color: $color-background;
+  background-color: #fff;
 }
 
 .container {
   margin: 0 auto;
+  height: 100%;
   padding: $content-padding;
   max-width: $content-width;
   font-size: $font-size-14;
   color: $color-main;
-}
-
-// navigation header:
-.headerLink {
-  display: block;
-  padding: 15px 20px;
-  color: #fff;
-  font-weight: 500;
-}
-.headerLink:hover {
-  background-color: rgb(145, 111, 182);
-}
-
-.headerActiveLink {
-  display: block;
-  padding: 15px 20px;
-  color: #fff;
-  font-weight: 500;
-  background-color: $color-secondary;
-}
-
-// navigation footer:
-.footerLink {
-  display: block;
-  padding: 15px 20px;
-  color: $color-background;
-  font-weight: 500;
-}
-.footerLink:hover {
-  background-color: #444444;
-}
-
-.footerActiveLink {
-  display: block;
-  padding: 15px 20px;
-  color: $color-background;
-  font-weight: 500;
-  background-color: #444444;
 }
 
 .none {

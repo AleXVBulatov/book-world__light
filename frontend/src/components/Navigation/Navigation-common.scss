@@ -1,0 +1,44 @@
+@import "../../scss/variables.scss";
+
+.nav {
+  height: auto;
+  width: 100%;
+
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .link-common {
+      display: block;
+      padding: 15px 20px;
+      font-weight: 500;
+    }
+
+    // navigation header:
+    .header-link {
+      color: #fff;
+    }
+    .header-link:hover {
+      background-color: rgb(145, 111, 182);
+    }
+
+    .header-link-active {
+      color: #fff;
+      background-color: $color-secondary;
+    }
+
+    // navigation footer:
+    .footer-link {
+      color: $color-background;
+    }
+    .footer-link:hover {
+      background-color: #444444;
+    }
+
+    .footer-link-active {
+      color: $color-background;
+      background-color: #444444;
+    }
+  }
+}
