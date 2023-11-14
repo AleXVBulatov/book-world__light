@@ -1,30 +1,30 @@
 [
   {
-    "id": "1",
+    "id": "fiction",
     "name": "Художественная литература"
   },
   {
-    "id": "2",
+    "id": "children's_literature",
     "name": "Детская литература"
   },
   {
-    "id": "3",
+    "id": "educational_literature",
     "name": "Позновательная литература"
   },
   {
-    "id": "4",
+    "id": "gift_editions",
     "name": "Подарочные издания"
   },
   {
-    "id": "5",
+    "id": "creator's_kit",
     "name": "Наборы для творчества"
   },
   {
-    "id": "6",
+    "id": "board_games",
     "name": "Настольные игры"
   },
   {
-    "id": "7",
+    "id": "e-books",
     "name": "Электронные книги"
   }
 ]

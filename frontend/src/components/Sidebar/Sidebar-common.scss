@@ -1,7 +1,7 @@
 @import "../../scss/variables.scss";
 
 .sidebar {
-  width: 20%;
+  flex: 0 1 20%;
   min-height: 100%;
   background-color: $color-background;
 
@@ -9,7 +9,7 @@
     padding: 30px 20px 20px;
 
     .title {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       font-size: 18px;
       font-weight: 500;
       color: $color-secondary;
@@ -20,19 +20,24 @@
       display: block;
       padding: 10px 0;
       color: $headerLinksColor;
-
       &:active {
         color: $headerLinksColorActive;
       }
-
       &:hover {
         color: $color-secondary;
+      }
+      &::first-letter {
+        color: $color-secondary;
+        font-size: 1.4em;
       }
     }
 
     .activeLink {
       margin-left: 10px;
       color: $color-secondary;
+      // &::first-letter {
+      //   color: $color-primary;
+      // }
     }
   }
 }

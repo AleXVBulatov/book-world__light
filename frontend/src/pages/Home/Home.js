@@ -1,7 +1,11 @@
 import React from "react";
 
+import styles from "./Home.module.scss";
+
+import Poster from "../../components/Poster/Poster";
+
 const Home = () => {
-  return <h2>Home</h2>;
+  return <Poster />;
 };
 
 export default Home;
