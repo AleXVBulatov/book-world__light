@@ -1,0 +1,118 @@
+@import "../../scss/variables.scss";
+
+.products {
+  flex: 1 1 auto;
+  padding: 20px 0; // Здесь
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    padding: 0 0 0 40px;
+    margin: 0 -10px;
+
+    .card {
+      display: flex;
+      flex: 0 1 25%;
+      padding: 0 10px;
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 10px;
+        border-radius: 5px;
+        background-color: $color-background;
+
+        .image {
+          display: block;
+          margin-bottom: 10px;
+          text-align: center;
+
+          img {
+            width: auto;
+            height: 200px;
+            object-fit: contain;
+          }
+        }
+
+        .wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 10px;
+          height: 100%;
+
+          border-radius: 5px;
+          color: $color-main;
+          background-color: #fff;
+
+          .description {
+            color: $color-main;
+            margin-bottom: 10px;
+
+            .title {
+              font-weight: 700;
+            }
+
+            .author {
+              font-style: italic;
+            }
+
+            .price {
+              font-weight: 500;
+            }
+            & > :not(:last-child) {
+              margin-bottom: 10px;
+            }
+          }
+
+          .order {
+            .info {
+              align-items: center;
+              .rating {
+                color: $color-secondary;
+              }
+
+              .inStock {
+                color: rgb(26, 165, 26);
+                font-size: 12px;
+              }
+            }
+
+            & > * {
+              display: flex;
+              justify-content: space-between;
+            }
+            & > *:not(:last-child) {
+              margin-bottom: 10px;
+            }
+
+            .buttons {
+              display: flex;
+              justify-content: space-between;
+
+              .btn-buy {
+                flex: 0 0 80%;
+                padding: 5px;
+                border-radius: 5px;
+                color: $color-background;
+                color: #fff;
+                background-color: $color-primary;
+
+                &:hover {
+                  background-color: $color-secondary;
+                }
+              }
+
+              .icon-favourite {
+                background: none;
+                color: $color-secondary;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

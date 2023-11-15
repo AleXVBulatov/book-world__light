@@ -2,16 +2,17 @@ import React from "react";
 
 import data from "../../data/books.json";
 
-const Books = () => {
+const Novelty = () => {
   return (
     <ul className="block">
       {data.map((book, index) => {
+        console.log(book);
         return (
           <li key={index}>
             <h3>{book.author}</h3>
             <h4>{book.title}</h4>
             <p>{book.year}</p>
-            <img src={book.img} alt={book.name} />
+            <img src={book.images[0]} alt={book.name} />
           </li>
         );
       })}
@@ -19,4 +20,4 @@ const Books = () => {
   );
 };
 
-export default Books;
+export default Novelty;

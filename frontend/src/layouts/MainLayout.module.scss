@@ -5,11 +5,12 @@
   flex-direction: column;
 
   .content {
-    flex: 1 1 auto;
+    flex-grow: 1;
+    // padding: 20px;
 
     .block {
       display: flex;
-      flex-wrap: wrap;
+      // overflow: hidden;
 
       height: 100%;
     }
