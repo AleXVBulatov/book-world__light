@@ -25,7 +25,7 @@ const categoriesSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(fetchCategories.fulfilled, (state, action) => {
-      state.list.push(action.payload);
+      state.list.push(...action.payload);
       state.isLoading = false;
     });
     builder.addCase(fetchCategories.rejected, (state) => {

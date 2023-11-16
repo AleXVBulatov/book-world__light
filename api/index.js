@@ -12,8 +12,8 @@ app.get("/categories", (req, res) => {
   res.sendFile(path.resolve(__dirname, "db", "categories.json"));
 });
 
-app.get("/books", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "db", "books.json"));
+app.get("/products", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "db", "products.json"));
 });
 
 const port = process.env.PORT || 4000;

@@ -27,7 +27,6 @@ const Poster = () => {
     const params = {
       slidesPerView: 1,
       navigation: "true",
-      pagination: "true",
       pagination: {
         clickable: "true",
       },

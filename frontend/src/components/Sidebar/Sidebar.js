@@ -6,8 +6,7 @@ import styles from "./Sidebar.module.scss";
 import { selectCategories } from "../../redux/categories/categoriesSlice";
 
 const Sidebar = () => {
-  const selector = useSelector(selectCategories);
-  const [categories] = selector;
+  const categories = useSelector(selectCategories);
 
   return (
     <section className={styles.sidebar}>

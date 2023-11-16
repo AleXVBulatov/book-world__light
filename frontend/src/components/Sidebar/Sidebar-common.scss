@@ -3,9 +3,15 @@
 .sidebar {
   flex: 0 0 20%;
   min-height: 100%;
+  margin: 0 40px 0 0;
   background-color: $color-background;
 
   .block {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    flex: 1 0 auto;
+    min-height: 100%;
     padding: 30px 20px 20px;
 
     .title {

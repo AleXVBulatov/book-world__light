@@ -2,19 +2,31 @@
 
 .products {
   flex: 1 1 auto;
-  padding: 20px 0; // Здесь
+  // padding: 20px 0; // Здесь
+
+  .section-title {
+    padding: 20px;
+    text-align: center;
+    font-weight: 700;
+  }
 
   .list {
     display: flex;
     flex-wrap: wrap;
     row-gap: 20px;
-    padding: 0 0 0 40px;
+    // padding: 0 0 0 40px;
     margin: 0 -10px;
 
     .card {
       display: flex;
-      flex: 0 1 25%;
+      // flex-basis: 25%;
+      flex-grow: 0;
+      flex-shrink: 1;
       padding: 0 10px;
+
+      // &:last-child {
+      //   flex-grow: 0;
+      // }
 
       .content {
         display: flex;

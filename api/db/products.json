@@ -63,7 +63,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://content2.rozetka.com.ua/goods/images/big/337429203.jpg"],
     "category": {
-      "id": "fiction",
+      "id": "children's_literature",
       "name": "Художественная литература"
     },
     "other": {
@@ -73,7 +73,7 @@
       "price": 300,
       "language": "russian"
     },
-    "rating": "2.3"
+    "rating": "2.4"
   },
   {
     "author": "Брэдбери Рэй",
@@ -82,7 +82,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://balka-book.com/files/2021/08_24/15_17/u_files_store_6_345.jpg"],
     "category": {
-      "id": "fiction",
+      "id": "educational_literature",
       "name": "Художественная литература"
     },
     "other": {
@@ -101,7 +101,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://content2.rozetka.com.ua/goods/images/big/252848068.jpg"],
     "category": {
-      "id": "fiction",
+      "id": "gift_editions",
       "name": "Художественная литература"
     },
     "other": {
@@ -120,7 +120,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://content2.rozetka.com.ua/goods/images/big/337429203.jpg"],
     "category": {
-      "id": "fiction",
+      "id": "creator's_kit",
       "name": "Художественная литература"
     },
     "other": {
@@ -139,7 +139,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://balka-book.com/files/2021/08_24/15_17/u_files_store_6_345.jpg"],
     "category": {
-      "id": "fiction",
+      "id": "board_games",
       "name": "Художественная литература"
     },
     "other": {
@@ -158,7 +158,83 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://content2.rozetka.com.ua/goods/images/big/252848068.jpg"],
     "category": {
-      "id": "fiction",
+      "id": "e-books",
+      "name": "Художественная литература"
+    },
+    "other": {
+      "genre": "Фантастика",
+      "pages": 256,
+      "cover": "soft",
+      "price": 142,
+      "language": "english"
+    },
+    "rating": "3.2"
+  },
+  {
+    "author": "Брэдбери Рэй",
+    "title": "451' по Фаренгейту",
+    "year": 1953,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
+    "images": ["https://content2.rozetka.com.ua/goods/images/big/252848068.jpg"],
+    "category": {
+      "id": "e-books",
+      "name": "Художественная литература"
+    },
+    "other": {
+      "genre": "Фантастика",
+      "pages": 256,
+      "cover": "soft",
+      "price": 142,
+      "language": "english"
+    },
+    "rating": "3.2"
+  },
+  {
+    "author": "Брэдбери Рэй",
+    "title": "451' по Фаренгейту",
+    "year": 1953,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
+    "images": ["https://content2.rozetka.com.ua/goods/images/big/252848068.jpg"],
+    "category": {
+      "id": "e-books",
+      "name": "Художественная литература"
+    },
+    "other": {
+      "genre": "Фантастика",
+      "pages": 256,
+      "cover": "soft",
+      "price": 142,
+      "language": "english"
+    },
+    "rating": "3.2"
+  },
+  {
+    "author": "Брэдбери Рэй",
+    "title": "451' по Фаренгейту",
+    "year": 1953,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
+    "images": ["https://content2.rozetka.com.ua/goods/images/big/252848068.jpg"],
+    "category": {
+      "id": "e-books",
+      "name": "Художественная литература"
+    },
+    "other": {
+      "genre": "Фантастика",
+      "pages": 256,
+      "cover": "soft",
+      "price": 142,
+      "language": "english"
+    },
+    "rating": "3.2"
+  },
+  {
+    "author": "Брэдбери Рэй",
+    "title": "451' по Фаренгейту",
+    "year": 1953,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
+    "images": ["https://content2.rozetka.com.ua/goods/images/big/252848068.jpg"],
+    "category": {
+      "id": "e-books",
       "name": "Художественная литература"
     },
     "other": {

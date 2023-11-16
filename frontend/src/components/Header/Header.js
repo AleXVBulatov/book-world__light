@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsSearch, BsTelephone, BsHeart, BsCart2 } from "react-icons/bs";
-import { MdLogin, MdLogout } from "react-icons/md";
+import { MdLogin } from "react-icons/md";
+// import { MdLogin, MdLogout } from "react-icons/md";
 
 import styles from "./Header.module.scss";
 import ROUTES from "../../utils/routes";
