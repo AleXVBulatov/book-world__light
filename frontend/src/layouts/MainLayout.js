@@ -17,10 +17,10 @@ const MainLayout = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div id="header">
-        <Header />
-        <Navigation position="header" backgroundColor="#673d95" />
-      </div>
+      {/* <div id="header"> */}
+      <Header />
+      <Navigation position="header" backgroundColor="#673d95" />
+      {/* </div> */}
 
       <div className={styles.content}>
         <div className="container">
@@ -35,10 +35,10 @@ const MainLayout = () => {
         <Products products={list} amount={5} title="Вы просматривали" columns={5} />
       </div>
 
-      <div id="footer">
-        <Navigation position="footer" backgroundColor="#333333" />
-        <Footer />
-      </div>
+      {/* <div id="footer"> */}
+      <Navigation position="footer" backgroundColor="#333333" />
+      <Footer />
+      {/* </div> */}
     </div>
   );
 };

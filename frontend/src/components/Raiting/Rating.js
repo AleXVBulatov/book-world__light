@@ -3,14 +3,14 @@ import React from "react";
 import styles from "./Rating.module.scss";
 
 const Rating = (props) => {
-  const { rating } = props;
+  const { rating, size } = props;
 
   const getRatingLength = (rating) => {
     return Number(rating) / 0.05;
   };
 
   return (
-    <form className={styles.rating}>
+    <form className={styles.rating} style={{ fontSize: size }}>
       <div className={styles.body}>
         <div className={styles.active} style={{ width: `${getRatingLength(rating)}%` }}></div>
         <div className={styles.items}>

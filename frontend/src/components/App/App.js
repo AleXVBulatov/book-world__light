@@ -15,8 +15,8 @@ import Novelty from "../../pages/Novelty/Novelty";
 import About from "../../pages/About/About";
 import Contacts from "../../pages/Contacts/Contacts";
 import Service from "../../pages/Service/Service";
-import Products from "../../components/Products/Products";
-import SingleProduct from "../SingleProduct/SingleProduct.js";
+import Products from "../Products/Products";
+import SingleProduct from "../SingleProduct/SingleProduct";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ function App() {
         <Route path={ROUTES.HOME} element={<MainLayout />}>
           <Route index={true} element={<Home />} />
           <Route path={ROUTES.CATEGORY} element={<Products products={list} amount={null} columns={4} />} />
-          <Route path={ROUTES.PRODUCTS} element={<SingleProduct />} />
+          <Route path={ROUTES.PRODUCT} element={<SingleProduct />} />
           <Route path={ROUTES.NOVELTY} element={<Novelty />} />
           <Route path={ROUTES.ABOUT} element={<About />} />
           <Route path={ROUTES.CONTACTS} element={<Contacts />} />

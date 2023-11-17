@@ -1,23 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-import data from "../../data/books.json";
+import { selectProducts } from "../../redux/products/productsSlice";
+
+import Products from "../../components/Products/Products";
 
 const Novelty = () => {
-  return (
-    <ul className="block">
-      {data.map((book, index) => {
-        console.log(book);
-        return (
-          <li key={index}>
-            <h3>{book.author}</h3>
-            <h4>{book.title}</h4>
-            <p>{book.year}</p>
-            <img src={book.images[0]} alt={book.name} />
-          </li>
-        );
-      })}
-    </ul>
-  );
+  const list = useSelector(selectProducts);
+
+  return <Products products={list} amount={null} columns={4} />;
 };
 
 export default Novelty;

@@ -3,7 +3,7 @@ const ROUTES = {
   CART: "cart",
   FAVOURITE: "favourite",
   CATEGORY: "categories/:id",
-  PRODUCTS: ":id",
+  PRODUCT: "categories/:id/:id",
 
   NOVELTY: "novelty",
   ABOUT: "about",

@@ -6,6 +6,7 @@
   left: 0;
   background-color: $headerBG;
   padding: $content-padding;
+  border-bottom: 1px solid $headerInputBorder;
 
   .row {
     display: flex;
