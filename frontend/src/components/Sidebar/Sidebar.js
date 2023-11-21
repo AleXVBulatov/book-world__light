@@ -16,9 +16,9 @@ const Sidebar = () => {
           {categories &&
             categories.map((category) => {
               return (
-                <li key={category.id}>
+                <li key={category.slug}>
                   <NavLink
-                    to={`categories/${category.id}`}
+                    to={`categories/${category.slug}`}
                     className={({ isActive }) => `${styles.link} ${isActive ? styles.activeLink : ""}`}
                   >
                     {category.name}

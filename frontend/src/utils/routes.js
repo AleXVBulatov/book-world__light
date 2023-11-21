@@ -2,8 +2,8 @@ const ROUTES = {
   HOME: "/",
   CART: "cart",
   FAVOURITE: "favourite",
-  CATEGORY: "categories/:id",
-  PRODUCT: "categories/:id/:id",
+  CATEGORY: "categories/:slug",
+  PRODUCT: "categories/:slug/:id",
 
   NOVELTY: "novelty",
   ABOUT: "about",

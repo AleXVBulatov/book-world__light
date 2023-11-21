@@ -8,6 +8,7 @@
   .section-title {
     padding: 20px;
     text-align: center;
+    font-size: 20px;
     font-weight: 700;
   }
 
@@ -114,6 +115,7 @@
                 color: $color-background;
                 color: #fff;
                 background-color: $color-primary;
+                transition: all 0.4s ease;
 
                 &:hover {
                   background-color: $color-secondary;

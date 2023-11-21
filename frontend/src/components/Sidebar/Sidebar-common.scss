@@ -13,37 +13,38 @@
     flex: 1 0 auto;
     min-height: 100%;
     padding: 30px 20px 20px;
+    // background-color: #fff;
 
     .title {
       margin-bottom: 20px;
       font-size: 18px;
       font-weight: 500;
-      color: $color-secondary;
       color: $color-primary;
     }
 
     .link {
       display: block;
-      padding: 10px 0;
+      padding: 10px 0px;
+      border: 1px solid $color-background;
+      border-radius: 5px;
       color: $headerLinksColor;
+      transition: all 0.4s ease;
+
       &:active {
         color: $headerLinksColorActive;
       }
       &:hover {
-        color: $color-secondary;
+        background-color: #fff;
       }
       &::first-letter {
-        color: $color-secondary;
         font-size: 1.4em;
       }
     }
 
     .activeLink {
       margin-left: 10px;
-      color: $color-secondary;
-      // &::first-letter {
-      //   color: $color-primary;
-      // }
+      padding: 10px 10px;
+      background-color: #fff;
     }
   }
 }

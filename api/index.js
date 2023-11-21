@@ -18,6 +18,21 @@ app.get("/products", (req, res) => {
   res.sendFile(path.join(__dirname, "db", "products.json"));
 });
 
+app.get("/categories/:slug/:id", (req, res) => {
+  const { id } = req.params;
+  // console.log("id: ", id);
+  fs.readFile(path.join(__dirname, "db", "products.json"), "utf-8", (err, data) => {
+    if (err) throw err;
+
+    const product = JSON.parse(data).find((product) => product.id === id);
+    if (product) {
+      res.send(product);
+    } else {
+      res.send("Данные продукт не найден");
+    }
+  });
+});
+
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}...`);

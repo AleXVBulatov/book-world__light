@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./Products.module.scss";
@@ -16,15 +16,12 @@ const Products = (props) => {
   // console.log(listAmount);
 
   const dispatch = useDispatch();
-  const location = useLocation();
-  const categoryID = location.pathname.split("/").reverse()[0];
-
+  const { slug } = useParams();
   const selector = useSelector(selectProducts);
-  // console.log(selector);
 
   useEffect(() => {
-    dispatch(filterByCategory(categoryID));
-  }, [dispatch, categoryID, selector?.length]);
+    dispatch(filterByCategory(slug));
+  }, [dispatch, slug, selector?.length]);
 
   return (
     <section className={styles.products}>

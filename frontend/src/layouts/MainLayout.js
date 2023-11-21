@@ -31,6 +31,7 @@ const MainLayout = () => {
         </div>
       </div>
 
+      <div className="line"></div>
       <div className="container">
         <Products products={list} amount={5} title="Вы просматривали" columns={5} />
       </div>

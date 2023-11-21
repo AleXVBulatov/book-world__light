@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
   list: [],
   filtered: [],
+  // product: [],
   related: [],
   isLoading: false,
 };
@@ -25,6 +26,9 @@ const productsSlice = createSlice({
     filterByCategory: (state, action) => {
       state.filtered = state.list.filter((product) => product.category.id === action.payload);
     },
+    // getProduct: (state, action) => {
+    //   state.product = state.list.filter((product) => product.id === action.payload);
+    // },
   },
 
   extraReducers: (builder) => {
@@ -42,9 +46,10 @@ const productsSlice = createSlice({
   },
 });
 
-export const { filterByCategory } = productsSlice.actions;
+export const { filterByCategory, getProduct } = productsSlice.actions;
 
 export const selectProducts = (state) => state.products.list;
 export const selectProductsfilterByCategory = (state) => state.products.filtered;
+// export const selectProductById = (state) => state.products.product;
 
 export default productsSlice.reducer;
