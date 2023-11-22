@@ -122,6 +122,14 @@
                 }
               }
 
+              .btn-disabled {
+                // visibility: hidden;
+                opacity: 0.4;
+                &:hover {
+                  background-color: $color-primary;
+                }
+              }
+
               .icon-favourite {
                 background: none;
                 color: $color-secondary;

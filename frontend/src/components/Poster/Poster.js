@@ -30,6 +30,7 @@ const Poster = () => {
       pagination: {
         clickable: "true",
       },
+      // loop: true,
       autoplay: {
         delay: 3000,
       },

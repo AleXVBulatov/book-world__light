@@ -21,7 +21,7 @@ const Rating = (props) => {
           <input type="radio" className={styles.item} value="5" name="rating" />
         </div>
       </div>
-      <div className={styles.result}>{rating}</div>
+      <div className={styles.result}>{rating ? rating : 0}</div>
     </form>
   );
 };

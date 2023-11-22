@@ -1,28 +1,43 @@
 import React, { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { useGetProductQuery } from "../../redux/api/apiSlice";
-import ROUTES from "../../utils/routes";
+import styles from "./SingleProduct.module.scss";
+
+import { selectProducts, selectProductsRelatedByAuthor, getRelatedProducts } from "../../redux/products/productsSlice";
 
 import Product from "./Product";
+import Products from "../Products/Products";
 
 const SingleProduct = () => {
-  const { slug, id } = useParams();
-  const { data, isLoading, isSuccess, isFetching } = useGetProductQuery({ slug, id });
-  const navigate = useNavigate();
+  const { id } = useParams();
+  const selector = useSelector(selectProducts);
+  const data = selector.find((product) => product.id === id);
+
+  const dispatch = useDispatch();
+  const related = useSelector(selectProductsRelatedByAuthor);
 
   useEffect(() => {
-    if (!isFetching && !isLoading && !isSuccess) {
-      navigate(ROUTES.HOME);
-    }
-  }, [isFetching, isLoading, isSuccess, navigate]);
+    if (!data) return;
+    dispatch(getRelatedProducts(data.author));
+  }, [dispatch, data]);
 
-  return !data ? <section className="preloader">Loading...</section> : <Product {...data} />;
+  return !data ? (
+    <section className="preloader">Loading...</section>
+  ) : (
+    <>
+      <div className={styles.column}>
+        <Product {...data} />
+        <div className="line"></div>
+        <Products products={related} amount={5} title="Книги данного автора" columns={5} ratingMini />
+      </div>
+    </>
+  );
 };
 
 export default SingleProduct;
 
-// вариант 1:
+// вариант 1 (через apiSlice):
 // import React from "react";
 // import { useParams } from "react-router-dom";
 
@@ -39,7 +54,7 @@ export default SingleProduct;
 
 // export default SingleProduct;
 
-// вариант 2:
+// вариант 2 (Через строку запроса):
 // import React from "react";
 // import { useSelector } from "react-redux";
 // import { useParams } from "react-router-dom";
@@ -57,7 +72,7 @@ export default SingleProduct;
 
 // export default SingleProduct;
 
-// вариант 3:
+// вариант 3 (через productsSlice (getProduct reducer)):
 // import React, { useEffect } from "react";
 // import { getProduct, selectProductById } from "../../redux/products/productsSlice";
 // import { useDispatch, useSelector } from "react-redux";
@@ -78,6 +93,53 @@ export default SingleProduct;
 //   }, [dispatch, id]);
 
 //   return !data ? <section className="preloader">Loading...</section> : <Product {...data} />;
+// };
+
+// export default SingleProduct;
+
+// Предыдущий вариант с запросом на сервер через apiSlice:
+// import React, { useEffect } from "react";
+// import { useParams, useNavigate } from "react-router-dom";
+
+// import styles from "./SingleProduct.module.scss";
+
+// import { selectProductsfilterByAuthor, filterByAuthor } from "../../redux/products/productsSlice";
+// import { useGetProductQuery } from "../../redux/api/apiSlice";
+// import ROUTES from "../../utils/routes";
+
+// import Product from "./Product";
+// import Products from "../Products/Products";
+// import { useDispatch, useSelector } from "react-redux";
+
+// const SingleProduct = () => {
+//   const { slug, id } = useParams();
+//   const { data, isLoading, isSuccess, isFetching } = useGetProductQuery({ slug, id });
+//   const navigate = useNavigate();
+//   const dispatch = useDispatch();
+//   const related = useSelector(selectProductsfilterByAuthor);
+
+//   useEffect(() => {
+//     if (!isFetching && !isLoading && !isSuccess) {
+//       navigate(ROUTES.HOME);
+//     }
+//   }, [isFetching, isLoading, isSuccess, navigate]);
+
+//   useEffect(() => {
+//     if (!data) return;
+//     dispatch(filterByAuthor(data.author));
+//   }, [dispatch, data]);
+
+//   return !data ? (
+//     <section className="preloader">Loading...</section>
+//   ) : (
+//     <>
+//       <div className={styles.column}>
+//         <Product {...data} />
+//         <div className="line"></div>
+//         <Products products={related} amount={5} title="Книги данного автора" columns={5} ratingMini />
+//       </div>
+//     </>
+//   );
 // };
 
 // export default SingleProduct;

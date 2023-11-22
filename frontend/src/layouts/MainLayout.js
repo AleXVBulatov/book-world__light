@@ -33,7 +33,7 @@ const MainLayout = () => {
 
       <div className="line"></div>
       <div className="container">
-        <Products products={list} amount={5} title="Вы просматривали" columns={5} />
+        <Products products={list} amount={7} title="Вы просматривали" columns={7} ratingMini />
       </div>
 
       {/* <div id="footer"> */}

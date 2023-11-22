@@ -1,14 +1,15 @@
 export const posterSwiperStyles = `
-  .swiper-button-next,
-  .swiper-button-prev {
-    background-color: #f6f6f6;
-    padding: 4px;
-    border-radius: 100%;              
-  }
+  // .swiper-button-next,
+  // .swiper-button-prev {
+  //   background-color: #f6f6f6;
+  //   padding: 4px;
+  //   border-radius: 100%;              
+  // }
 
   .swiper-button-next svg,
   .swiper-button-prev svg {
-    width: 10px;
+    // width: 10px;
+    // color: #ff9e60;
     color: #ff9e60;
   }
 
@@ -18,31 +19,35 @@ export const posterSwiperStyles = `
     align-items: center;
     gap: 4px;
 
-    height: 16px;
+    height: 14px;
     margin-bottom: 20px;
   }
   .swiper-pagination-bullet {
-    width: 12px;
-    height: 12px;
-    background-color: #f6f6f6;
+    width: 10px;
+    height: 10px;
+    // background-color: #f6f6f6;
+    background-color: #ff9e60;
     opacity: 0.4;
   }
   .swiper-pagination-bullet-active {
-    width: 16px;
-    height: 16px;
-    background-color: #f6f6f6;
+    width: 14px;
+    height: 14px;
+    // background-color: #f6f6f6;
+    background-color: #ff9e60;
     opacity: 1;
   }
 
   .swiper-scrollbar {
     margin-bottom: 5px;
     background: none;
-    background-color: rgba(245, 245, 245, 0.5);
+    // background-color: rgba(245, 245, 245, 0.5);
+    // background-color: rgba(255, 158, 97, 0.5);
   }
 
   .swiper-scrollbar > div {
     background: none;
-    background-color: rgba(245, 245, 245, 1);
+    // background-color: rgba(245, 245, 245, 1);
+    // background-color: rgba(255, 158, 97, 1);
   }
 `;
 // Для использования свой стрелки:
