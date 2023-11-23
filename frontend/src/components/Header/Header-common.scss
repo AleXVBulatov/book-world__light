@@ -4,6 +4,7 @@
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 10;
   background-color: $headerBG;
   padding: $content-padding;
   border-bottom: 1px solid $headerInputBorder;
@@ -70,31 +71,19 @@
       }
     }
 
-    .login {
-      .icon-login {
-        position: relative;
-        top: 3px;
-        right: 5px;
-      }
-      a {
-        color: $headerLinksColor;
-
-        &:active {
-          color: $headerLinksColorActive;
-        }
-      }
-    }
-
     .account {
       height: 100%;
 
       .row {
         // остальные параметры берутся из .row выше
-        width: 70px;
+        width: 124px;
         height: 100%;
-        padding-right: 10px;
+        padding: 0 0;
+        // padding-right: 10px;
 
         a {
+          display: flex;
+
           color: $headerLinksColor;
 
           &:active {
@@ -111,15 +100,41 @@
           bottom: 70%;
           left: 70%;
           display: block;
-          width: 16px;
-          height: 16px;
+          width: 17px;
+          height: 17px;
 
           text-align: center;
-          line-height: 16px;
+          line-height: 17px;
           border-radius: 50%;
-          font-size: 10px;
+          font-size: 11px;
 
           background-color: $headerAccountCount;
+        }
+
+        .login {
+          .user {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+            }
+
+            a {
+              color: $headerLinksColor;
+
+              &:active {
+                color: $headerLinksColorActive;
+              }
+            }
+          }
         }
       }
     }

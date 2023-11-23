@@ -11,6 +11,7 @@ import Footer from "../components/Footer/Footer.js";
 import Navigation from "../components/Navigation/Navigation.js";
 import Sidebar from "../components/Sidebar/Sidebar.js";
 import Products from "../components/Products/Products.js";
+import UserForm from "../components/User/UserForm.js";
 
 const MainLayout = () => {
   const list = useSelector(selectProducts);
@@ -40,6 +41,8 @@ const MainLayout = () => {
       <Navigation position="footer" backgroundColor="#333333" />
       <Footer />
       {/* </div> */}
+
+      <UserForm />
     </div>
   );
 };

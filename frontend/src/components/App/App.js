@@ -35,6 +35,7 @@ function App() {
           <Route index={true} element={<Home />} />
           <Route path={ROUTES.CATEGORY} element={<Products products={list} amount={null} columns={4} />} />
           <Route path={ROUTES.PRODUCT} element={<SingleProduct />} />
+
           <Route path={ROUTES.NOVELTY} element={<Novelty />} />
           <Route path={ROUTES.ABOUT} element={<About />} />
           <Route path={ROUTES.CONTACTS} element={<Contacts />} />

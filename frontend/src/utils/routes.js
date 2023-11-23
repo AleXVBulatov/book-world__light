@@ -9,7 +9,6 @@ const ROUTES = {
   ABOUT: "about",
   CONTACTS: "contacts",
   SERVICE: "service",
-  LOGIN: "login",
   NOTFOUND: "not-found",
 };
 

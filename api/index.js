@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
+const bodyParser = require("body-parser");
 const { v4: uuid4 } = require("uuid");
 
 const app = express();
@@ -9,6 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.get("/categories", (req, res) => {
   res.sendFile(path.join(__dirname, "db", "categories.json"));
@@ -29,6 +31,55 @@ app.get("/categories/:slug/:id", (req, res) => {
       res.send(product);
     } else {
       res.send("Данные продукт не найден");
+    }
+  });
+});
+
+// app.get("/users", (req, res) => {
+//   res.sendFile(path.join(__dirname, "db", "users.json"));
+// });
+
+app.post("/users/login", (req, res) => {
+  fs.readFile(path.join(__dirname, "db", "users.json"), "utf-8", (err, data) => {
+    if (err) throw err;
+
+    const users = JSON.parse(data);
+    const user = users.find((user) => user.email === req.body.email);
+
+    if (!user) {
+      res.send("Такого пользователя нет");
+    } else if (user.email === req.body.email && user.password === req.body.password) {
+      res.send(user);
+    } else {
+      res.send("Неверное имя пользователя или пароль");
+    }
+  });
+});
+
+app.post("/users/signup", (req, res) => {
+  console.log(req.body);
+
+  fs.readFile(path.join(__dirname, "db", "users.json"), "utf-8", (err, data) => {
+    if (err) throw err;
+    const users = JSON.parse(data);
+    const user = users.find((user) => user.email === req.body.email);
+
+    if (user) {
+      res.send("Такой пользователь уже есть");
+    } else {
+      res.send("Регистрация");
+
+      const newUser = {
+        ...req.body,
+        id: uuid4(),
+        role: "costomer",
+      };
+
+      users.push(newUser);
+
+      fs.writeFile(path.join(__dirname, "db", "users.json"), JSON.stringify(users), "utf-8", (err) => {
+        if (err) throw err;
+      });
     }
   });
 });
