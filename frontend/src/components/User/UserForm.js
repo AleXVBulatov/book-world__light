@@ -1,26 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import styles from "./UserForm.module.scss";
-import { selectUserForm, toggleUserForm } from "../../redux/user/userSlice";
+import { selectForm, toggleForm, toggleFormType, selectFormType, selectMessage } from "../../redux/user/userSlice";
 
 import UserLoginForm from "./UserLoginForm";
 import UserSignupForm from "./UserSignupForm";
 import { IoMdClose } from "react-icons/io";
 
 const UserForm = () => {
-  const [currentForm, setCurrentForm] = useState("login");
   const dispatch = useDispatch();
-  const userForm = useSelector(selectUserForm);
+  const showForm = useSelector(selectForm);
+  const currentForm = useSelector(selectFormType);
+  const message = useSelector(selectMessage);
+
+  const closeForm = () => {
+    dispatch(toggleForm(!showForm));
+  };
+
+  const changeFormType = (type) => {
+    dispatch(toggleFormType(type));
+  };
 
   return (
-    userForm && (
+    showForm && (
       <div className={styles.wrapper}>
         <div className={styles.row}>
           <div
-            className={styles.left}
+            className={styles.overlay}
             onClick={() => {
-              dispatch(toggleUserForm(!userForm));
+              closeForm();
             }}
           ></div>
           <div className={styles.block}>
@@ -28,14 +37,15 @@ const UserForm = () => {
               size={26}
               className={styles["btn-close"]}
               onClick={() => {
-                dispatch(toggleUserForm(!userForm));
+                closeForm();
               }}
             />
             {currentForm === "login" ? (
-              <UserLoginForm toggleForm={setCurrentForm} />
+              <UserLoginForm changeFormType={changeFormType} closeForm={closeForm} />
             ) : (
-              <UserSignupForm toggleForm={setCurrentForm} />
+              <UserSignupForm changeFormType={changeFormType} />
             )}
+            {message && <div className={styles.message}>{message}</div>}
           </div>
         </div>
       </div>

@@ -35,23 +35,21 @@ app.get("/categories/:slug/:id", (req, res) => {
   });
 });
 
-// app.get("/users", (req, res) => {
-//   res.sendFile(path.join(__dirname, "db", "users.json"));
-// });
-
 app.post("/users/login", (req, res) => {
   fs.readFile(path.join(__dirname, "db", "users.json"), "utf-8", (err, data) => {
     if (err) throw err;
+
+    if (!data) return;
 
     const users = JSON.parse(data);
     const user = users.find((user) => user.email === req.body.email);
 
     if (!user) {
-      res.send("Такого пользователя нет");
+      res.send("Неверное имя пользователя или пароль");
+    } else if (user.email !== req.body.email || user.password !== req.body.password) {
+      res.send("Неверное имя пользователя или пароль");
     } else if (user.email === req.body.email && user.password === req.body.password) {
       res.send(user);
-    } else {
-      res.send("Неверное имя пользователя или пароль");
     }
   });
 });
@@ -61,14 +59,17 @@ app.post("/users/signup", (req, res) => {
 
   fs.readFile(path.join(__dirname, "db", "users.json"), "utf-8", (err, data) => {
     if (err) throw err;
+
     const users = JSON.parse(data);
     const user = users.find((user) => user.email === req.body.email);
+
+    console.log(user);
 
     if (user) {
       res.send("Такой пользователь уже есть");
     } else {
-      res.send("Регистрация");
-
+      res.send("Профиль создан");
+      console.log("Запись");
       const newUser = {
         ...req.body,
         id: uuid4(),
@@ -77,7 +78,7 @@ app.post("/users/signup", (req, res) => {
 
       users.push(newUser);
 
-      fs.writeFile(path.join(__dirname, "db", "users.json"), JSON.stringify(users), "utf-8", (err) => {
+      fs.writeFileSync(path.join(__dirname, "db", "users.json"), JSON.stringify(users), "utf-8", (err) => {
         if (err) throw err;
       });
     }

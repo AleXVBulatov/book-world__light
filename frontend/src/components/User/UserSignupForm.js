@@ -1,91 +1,108 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./UserForm.module.scss";
-import { BASE_URL } from "../../utils/constants";
+import { createUser, selectMessage, setMessage } from "../../redux/user/userSlice";
 
 const UserSignupForm = (props) => {
-  const { toggleForm } = props;
+  const { changeFormType } = props;
+  const dispatch = useDispatch();
+  const message = useSelector(selectMessage);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const [message, setMessage] = useState("");
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+    name: "",
+    avatar: "",
+  });
+
+  const { email, password, name, avatar } = values;
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setValues({ ...values, [name]: value });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = {
+
+    const isNotEmpty = Object.values(values).every((val) => val);
+    if (!isNotEmpty) return;
+
+    const newUser = {
       email,
       password,
       name,
       avatar,
     };
 
-    axios
-      .post(`${BASE_URL}/users/signup`, data)
-      .then((res) => {
-        if (res.status === 200) {
-          if (res.data !== "Такой пользователь уже есть") {
-            toggleForm("login");
-            setMessage("");
-          } else {
-            setMessage(res.data);
-          }
-        }
-      })
-      .catch((err) => console.log(err));
+    dispatch(createUser(newUser));
   };
+
+  useEffect(() => {
+    if (message === "Профиль создан") {
+      setValues({ email: "", password: "", name: "", avatar: "" });
+
+      changeFormType("login");
+    }
+  }, [dispatch, changeFormType, setValues, message]);
 
   return (
     <div className={styles["user-form"]}>
       <h2 className={styles.title}>Sign Up</h2>
       <form method="POST" className={styles.form} onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          placeholder="Your email"
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          placeholder="Your password"
-          required
-        />
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          placeholder="Your name"
-          required
-        />
-        <input
-          type="avatar"
-          name="avatar"
-          value={avatar}
-          onChange={(event) => setAvatar(event.target.value)}
-          placeholder="Your avatar"
-          required
-        />
-
-        {message && <div className={styles.message}>{message}</div>}
+        <div className={styles.group}>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={(event) => handleChange(event)}
+            placeholder="Your email"
+            required
+          />
+        </div>
+        <div className={styles.group}>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={(event) => handleChange(event)}
+            placeholder="Your password"
+            required
+          />
+        </div>
+        <div className={styles.group}>
+          <input
+            type="name"
+            name="name"
+            value={name}
+            onChange={(event) => handleChange(event)}
+            placeholder="Your name"
+            required
+          />
+        </div>
+        <div className={styles.group}>
+          <input
+            type="avatar"
+            name="avatar"
+            value={avatar}
+            onChange={(event) => handleChange(event)}
+            placeholder="Your avatar"
+            required
+          />
+        </div>
 
         <div
           className={styles.text}
-          id="login"
-          onClick={(event) => {
-            toggleForm(event.target.id);
+          onClick={() => {
+            changeFormType("login");
+            dispatch(setMessage(""));
           }}
         >
           У меня уже есть аккаунт
         </div>
-        <button type="submit" className={styles.btn}>
+
+        <button type="submit" className={styles.submit}>
           Create an account
         </button>
       </form>

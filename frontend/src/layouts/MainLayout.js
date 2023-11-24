@@ -21,6 +21,7 @@ const MainLayout = () => {
       {/* <div id="header"> */}
       <Header />
       <Navigation position="header" backgroundColor="#673d95" />
+      <UserForm />
       {/* </div> */}
 
       <div className={styles.content}>
@@ -41,8 +42,6 @@ const MainLayout = () => {
       <Navigation position="footer" backgroundColor="#333333" />
       <Footer />
       {/* </div> */}
-
-      <UserForm />
     </div>
   );
 };

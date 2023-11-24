@@ -5,15 +5,22 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./Header.module.scss";
 import ROUTES from "../../utils/routes";
 import logo from "../../images/logo/logo-header.png";
-import { toggleUserForm, selectUserForm, selectUser } from "../../redux/user/userSlice";
+import { toggleForm, selectForm, selectUser, selectMessage } from "../../redux/user/userSlice";
 
 import { BsSearch, BsTelephone, BsHeart, BsCart } from "react-icons/bs";
 import { PiUserLight } from "react-icons/pi";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const userForm = useSelector(selectUserForm);
-  const [currentUser] = useSelector(selectUser);
+  const showForm = useSelector(selectForm);
+  const currentUser = useSelector(selectUser);
+  const message = useSelector(selectMessage);
+
+  useEffect(() => {
+    if (message) {
+      dispatch(toggleForm(true));
+    }
+  }, [message, dispatch]);
 
   return (
     <>
@@ -56,7 +63,7 @@ const Header = () => {
                   <div
                     className={styles.login}
                     onClick={() => {
-                      dispatch(toggleUserForm(!userForm));
+                      dispatch(toggleForm(!showForm));
                     }}
                   >
                     {!currentUser ? (

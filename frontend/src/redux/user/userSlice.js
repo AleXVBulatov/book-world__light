@@ -1,21 +1,35 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+import { BASE_URL } from "../../utils/constants";
+
 const initialState = {
-  user: [],
+  currentUser: null,
   cart: [],
   favourite: [],
-  userForm: false,
+  isLoading: false,
+  showForm: false,
+  formType: "login",
+  message: "",
 };
 
-// export const createUser = createAsyncThunk("user/createUser", async (url, thunkApi) => {
-//   try {
-//     const res = await axios.get(url);
-//     return res.data;
-//   } catch (error) {
-//     return thunkApi.rejectWithValue(error);
-//   }
-// });
+export const createUser = createAsyncThunk("user/createUser", async (data, thunkApi) => {
+  try {
+    const res = await axios.post(`${BASE_URL}/users/signup`, data);
+    return res.data;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error);
+  }
+});
+
+export const loginUser = createAsyncThunk("user/loginUser", async (data, thunkApi) => {
+  try {
+    const res = await axios.post(`${BASE_URL}/users/login`, data);
+    return res.data;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error);
+  }
+});
 
 const userSlice = createSlice({
   name: "user",
@@ -41,31 +55,55 @@ const userSlice = createSlice({
         state.favourite.splice(foundIndex, 1);
       }
     },
-    toggleUserForm: (state, action) => {
-      state.userForm = action.payload;
+    toggleForm: (state, action) => {
+      state.showForm = action.payload;
     },
-    addUser: (state, action) => {
-      if (action.payload) {
-        state.user = [action.payload];
-      } else {
-        state.user = [];
-      }
+    toggleFormType: (state, action) => {
+      state.formType = action.payload;
+    },
+    setMessage: (state, action) => {
+      state.message = action.payload;
+    },
+    removeCurrentUser: (state, action) => {
+      state.currentUser = action.payload;
     },
   },
 
-  // extraReducers: (builder) => {
-  //   builder.addCase(createUser.fulfilled, (state, action) => {
-  //     console.log(action);
-  //     // state.user.push(action.payload);
-  //   });
-  // },
+  extraReducers: (builder) => {
+    builder.addCase(createUser.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(createUser.fulfilled, (state, action) => {
+      if (action.payload === "Такой пользователь уже есть") {
+        state.message = action.payload;
+      } else {
+        state.message = action.payload;
+      }
+      state.isLoading = false;
+    });
+
+    builder.addCase(loginUser.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(loginUser.fulfilled, (state, action) => {
+      if (action.payload === "Неверное имя пользователя или пароль") {
+        state.message = action.payload;
+      } else if (typeof action.payload === "object") {
+        state.currentUser = action.payload;
+        state.message = "";
+      }
+      state.isLoading = false;
+    });
+  },
 });
 
-export const { addToCart, addToFavourite, addUser, toggleUserForm } = userSlice.actions;
+export const { addToCart, addToFavourite, toggleForm, removeCurrentUser, toggleFormType, setMessage } = userSlice.actions;
 
 export const selectCart = (state) => state.user.cart;
-export const selectUserForm = (state) => state.user.userForm;
-export const selectUser = (state) => state.user.user;
+export const selectForm = (state) => state.user.showForm;
+export const selectFormType = (state) => state.user.formType;
+export const selectUser = (state) => state.user.currentUser;
+export const selectMessage = (state) => state.user.message;
 
 export default userSlice.reducer;
 
