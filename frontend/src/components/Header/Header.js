@@ -1,26 +1,19 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./Header.module.scss";
 import ROUTES from "../../utils/routes";
 import logo from "../../images/logo/logo-header.png";
-import { toggleForm, selectForm, selectUser, selectMessage } from "../../redux/user/userSlice";
+import { toggleForm, selectUser } from "../../redux/user/userSlice";
 
 import { BsSearch, BsTelephone, BsHeart, BsCart } from "react-icons/bs";
 import { PiUserLight } from "react-icons/pi";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const showForm = useSelector(selectForm);
+  const navigate = useNavigate();
   const currentUser = useSelector(selectUser);
-  const message = useSelector(selectMessage);
-
-  useEffect(() => {
-    if (message) {
-      dispatch(toggleForm(true));
-    }
-  }, [message, dispatch]);
 
   return (
     <>
@@ -60,18 +53,23 @@ const Header = () => {
                     <span className={styles.count}>99</span>
                   </Link>
 
-                  <div
-                    className={styles.login}
-                    onClick={() => {
-                      dispatch(toggleForm(!showForm));
-                    }}
-                  >
+                  <div className={styles.login}>
                     {!currentUser ? (
-                      <div className={styles.user}>
+                      <div
+                        className={styles.user}
+                        onClick={() => {
+                          dispatch(toggleForm(true));
+                        }}
+                      >
                         <PiUserLight size={34} />
                       </div>
                     ) : (
-                      <div className={styles.user}>
+                      <div
+                        className={styles.user}
+                        onClick={() => {
+                          navigate("profile");
+                        }}
+                      >
                         <img src={`${currentUser.avatar}`} alt="Avatar" />
                       </div>
                     )}

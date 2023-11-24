@@ -85,6 +85,34 @@ app.post("/users/signup", (req, res) => {
   });
 });
 
+app.patch("/users/:id", (req, res) => {
+  // console.log(req.params);
+  // console.log(req.body);
+
+  fs.readFile(path.join(__dirname, "db", "users.json"), "utf-8", (err, data) => {
+    if (err) throw err;
+
+    const users = JSON.parse(data);
+    const user = users.find((user) => user.id === req.body.id);
+    const idx = users.findIndex((user) => user.id === req.body.id);
+
+    if (user) {
+      const updateUser = {
+        ...user,
+        ...req.body,
+      };
+
+      users[idx] = updateUser;
+
+      fs.writeFileSync(path.join(__dirname, "db", "users.json"), JSON.stringify(users), "utf-8", (err) => {
+        if (err) throw err;
+      });
+
+      res.send(updateUser);
+    }
+  });
+});
+
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}...`);

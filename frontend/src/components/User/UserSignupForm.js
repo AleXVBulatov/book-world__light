@@ -42,7 +42,6 @@ const UserSignupForm = (props) => {
   useEffect(() => {
     if (message === "Профиль создан") {
       setValues({ email: "", password: "", name: "", avatar: "" });
-
       changeFormType("login");
     }
   }, [dispatch, changeFormType, setValues, message]);

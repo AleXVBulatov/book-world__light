@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./UserForm.module.scss";
-import { selectUser, loginUser, removeCurrentUser, selectMessage } from "../../redux/user/userSlice";
+import { selectUser, loginUser, selectMessage } from "../../redux/user/userSlice";
 
 const UserLoginForm = (props) => {
   const { changeFormType, closeForm } = props;
@@ -29,15 +29,15 @@ const UserLoginForm = (props) => {
       password,
     };
 
-    closeForm();
     dispatch(loginUser(data));
   };
 
   useEffect(() => {
     if (currentUser && !message) {
       setValues({ email: "", password: "" });
+      closeForm();
     }
-  }, [dispatch, message, closeForm, currentUser]);
+  }, [closeForm, message, currentUser]);
 
   return (
     <div className={styles["user-form"]}>
@@ -62,18 +62,6 @@ const UserLoginForm = (props) => {
         <button type="submit" className={styles.submit}>
           Login
         </button>
-        {currentUser && (
-          <div
-            className={styles.text}
-            style={{ textAlign: "right" }}
-            onClick={() => {
-              closeForm();
-              dispatch(removeCurrentUser(null));
-            }}
-          >
-            Выйти из аккаунта
-          </div>
-        )}
       </form>
     </div>
   );

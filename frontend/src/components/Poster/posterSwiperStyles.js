@@ -10,7 +10,7 @@ export const posterSwiperStyles = `
   .swiper-button-prev svg {
     // width: 10px;
     // color: #ff9e60;
-    color: #ff9e60;
+    color: #673d95;
   }
 
   .swiper-pagination {
@@ -26,14 +26,16 @@ export const posterSwiperStyles = `
     width: 10px;
     height: 10px;
     // background-color: #f6f6f6;
-    background-color: #ff9e60;
+    // background-color: #ff9e60;
+    background-color: #673d95;
     opacity: 0.4;
   }
   .swiper-pagination-bullet-active {
     width: 14px;
     height: 14px;
     // background-color: #f6f6f6;
-    background-color: #ff9e60;
+    // background-color: #ff9e60;
+    background-color: #673d95;
     opacity: 1;
   }
 
