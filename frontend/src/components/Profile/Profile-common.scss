@@ -136,6 +136,13 @@
             background-color: rgb(145, 111, 182);
           }
         }
+        .btn-exit {
+          background-color: rgb(189, 0, 0);
+
+          &:hover {
+            background-color: rgb(199, 90, 90);
+          }
+        }
       }
     }
   }

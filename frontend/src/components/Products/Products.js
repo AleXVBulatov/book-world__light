@@ -51,9 +51,9 @@ const Products = (props) => {
                     <div className={styles.order}>
                       <div className={styles.info}>
                         {ratingMini ? (
-                          <RatingMini rating={product.rating} size={20} />
+                          <RatingMini rating={product.rating} starSize={20} fontSize={14} />
                         ) : (
-                          <Rating rating={product.rating} size={20} />
+                          <Rating rating={product.rating} starSize={20} fontSize={14} />
                         )}
                         <div className={styles.stock}>
                           {product.qty ? (

@@ -3,14 +3,14 @@ import React from "react";
 import styles from "./Rating.module.scss";
 
 const Rating = (props) => {
-  const { rating, size } = props;
+  const { rating, starSize, fontSize } = props;
 
   const getRatingLength = (rating) => {
     return Number(rating) / 0.05;
   };
 
   return (
-    <form className={styles.rating} style={{ fontSize: size }}>
+    <form className={styles.rating} style={{ fontSize: starSize }}>
       <div className={styles.body}>
         <div className={styles.active} style={{ width: `${getRatingLength(rating)}%` }}></div>
         <div className={styles.items}>
@@ -21,7 +21,9 @@ const Rating = (props) => {
           <input type="radio" className={styles.item} value="5" name="rating" />
         </div>
       </div>
-      <div className={styles.result}>{rating ? rating : 0}</div>
+      <div className={styles.result} style={{ fontSize: fontSize }}>
+        {rating ? rating : 0}
+      </div>
     </form>
   );
 };

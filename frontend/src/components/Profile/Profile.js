@@ -132,8 +132,7 @@ const Profile = () => {
 
               <button
                 type="button"
-                className={styles.submit}
-                style={{ backgroundColor: "red" }}
+                className={`${styles.submit} ${styles["btn-exit"]}`}
                 onClick={() => {
                   dispatch(removeCurrentUser(null));
                   navigate("/");
