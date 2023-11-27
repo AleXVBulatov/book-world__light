@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,12 +8,19 @@ import logo from "../../images/logo/logo-header.png";
 import { toggleForm, selectUser } from "../../redux/user/userSlice";
 
 import { BsSearch, BsTelephone, BsHeart, BsCart } from "react-icons/bs";
+import { IoClose } from "react-icons/io5";
 import { PiUserLight } from "react-icons/pi";
+import SearchBox from "../SearchBox/SearchBox.js";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentUser = useSelector(selectUser);
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleChange = (event) => {
+    setSearchValue(event.target.value);
+  };
 
   return (
     <>
@@ -29,12 +36,27 @@ const Header = () => {
 
               <form className={styles.form}>
                 <div className={styles.input}>
-                  <input type="text" name="search" placeholder="Поиск" onChange={() => {}} autoComplete="on" />
+                  <input
+                    type="text"
+                    name="search"
+                    value={searchValue}
+                    placeholder="Поиск"
+                    onChange={handleChange}
+                    autoComplete="off"
+                  />
                 </div>
 
-                <BsSearch size={18} className={styles["icon-search"]} />
+                {!searchValue ? (
+                  <BsSearch size={18} className={styles["icon-search"]} />
+                ) : (
+                  <IoClose size={18} className={styles["icon-close"]} onClick={() => setSearchValue("")} />
+                )}
 
-                {false && <div className={styles.box}></div>}
+                {searchValue && (
+                  <div className={styles.searchBox}>
+                    <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+                  </div>
+                )}
               </form>
 
               <div className={styles.info}>

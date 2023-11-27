@@ -12,12 +12,34 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// для получения гатегорий:
 app.get("/categories", (req, res) => {
   res.sendFile(path.join(__dirname, "db", "categories.json"));
 });
-
+// для получения товаров с query params:
 app.get("/products", (req, res) => {
-  res.sendFile(path.join(__dirname, "db", "products.json"));
+  const param = req.query.title;
+
+  fs.readFile(path.join(__dirname, "db", "products.json"), "utf-8", (err, data) => {
+    if (err) throw err;
+
+    const list = JSON.parse(data);
+
+    const filtered = list.filter((product) => {
+      const title = product.title.toLowerCase();
+      const author = product.author.toLowerCase();
+      const result = `${title} ${author}`;
+
+      if (!param) {
+        return result;
+      } else {
+        const value = param.toLowerCase();
+        return result.includes(value);
+      }
+    });
+
+    res.send(JSON.stringify(filtered));
+  });
 });
 
 app.get("/categories/:slug/:id", (req, res) => {
