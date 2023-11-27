@@ -4,20 +4,11 @@ import { register } from "swiper/element/bundle";
 
 import "swiper/css";
 import { posterSwiperStyles } from "./posterSwiperStyles";
-
 import styles from "./Poster.module.scss";
 
-import img_1 from "../../images/Poster/image_1.jpg";
-import img_2 from "../../images/Poster/image_2.jpg";
-import img_3 from "../../images/Poster/image_3.jpg";
+import images from "./poster-images";
 
 register();
-
-const images = [
-  { url: img_1, name: "Books 1" },
-  { url: img_2, name: "Books 2" },
-  { url: img_3, name: "Books 3" },
-];
 
 const Poster = () => {
   const swiperRef = useRef(null);
@@ -25,7 +16,7 @@ const Poster = () => {
   useEffect(() => {
     const swiperContainer = swiperRef.current;
     const params = {
-      slidesPerView: 1,
+      slidesPerView: 2,
       navigation: "true",
       pagination: {
         clickable: "true",

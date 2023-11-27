@@ -83,7 +83,7 @@ const Product = (props) => {
           </div>
 
           <div className={styles.order}>
-            <Rating rating={product.rating} size={32} />
+            <Rating rating={product.rating} size={24} />
 
             <div className={styles.stock}>
               {product.qty ? (

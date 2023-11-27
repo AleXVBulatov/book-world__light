@@ -8,7 +8,7 @@ const Rating = (props) => {
   return (
     <div className={styles.rating} style={{ fontSize: size }}>
       <div className={styles.body}></div>
-      <div className={styles.result}>{rating ? rating : 0}/5</div>
+      <div className={styles.result}>{rating ? rating : 0}</div>
     </div>
   );
 };
