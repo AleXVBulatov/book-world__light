@@ -8,7 +8,7 @@ import Products from "../../components/Products/Products";
 const Novelty = () => {
   const list = useSelector(selectProducts);
 
-  return <Products products={list} amount={null} columns={4} />;
+  return <Products products={list} amount={20} columns={4} />;
 };
 
 export default Novelty;

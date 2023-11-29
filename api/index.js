@@ -22,6 +22,11 @@ app.get("/products", (req, res) => {
   const searchCategorySlug = req.query.categorySlug;
   const searchPriceMin = Number(req.query.price_min);
   const searchPriceMax = Number(req.query.price_max);
+  const offset = Number(req.query.offset);
+  const limit = Number(req.query.limit);
+
+  // console.log(offset);
+  // console.log(limit);
 
   fs.readFile(path.join(__dirname, "db", "products.json"), "utf-8", (err, data) => {
     if (err) throw err;
@@ -56,6 +61,16 @@ app.get("/products", (req, res) => {
         // для поиска по max цене:
         if (!searchPriceMax) return product;
         return product.price <= searchPriceMax;
+      })
+      .filter((product, index) => {
+        // для поиска по max цене:
+        if (!offset) return product;
+        return index >= offset;
+      })
+      .filter((product, index) => {
+        // для поиска по max цене:
+        if (!limit) return product;
+        return index < limit;
       });
 
     res.send(JSON.stringify(filtered));

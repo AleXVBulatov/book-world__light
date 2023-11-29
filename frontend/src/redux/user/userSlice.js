@@ -11,6 +11,7 @@ const initialState = {
   showForm: false,
   formType: "login",
   message: "",
+  productsAmountOnPage: 8,
 };
 
 export const createUser = createAsyncThunk("user/createUser", async (data, thunkApi) => {
@@ -76,6 +77,9 @@ const userSlice = createSlice({
     removeCurrentUser: (state, action) => {
       state.user = action.payload;
     },
+    setProductsAmountOnPage: (state, action) => {
+      state.productsAmountOnPage = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
@@ -103,13 +107,15 @@ const userSlice = createSlice({
   },
 });
 
-export const { addToCart, addToFavourite, toggleForm, removeCurrentUser, toggleFormType, setMessage } = userSlice.actions;
+export const { addToCart, addToFavourite, setProductsAmountOnPage, toggleForm, removeCurrentUser, toggleFormType, setMessage } =
+  userSlice.actions;
 
 export const selectCart = (state) => state.user.cart;
 export const selectForm = (state) => state.user.showForm;
 export const selectFormType = (state) => state.user.formType;
 export const selectUser = (state) => state.user.user;
 export const selectMessage = (state) => state.user.message;
+export const selectProductsAmountOnPage = (state) => state.user.productsAmountOnPage;
 
 export default userSlice.reducer;
 

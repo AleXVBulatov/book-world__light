@@ -4,6 +4,15 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .section-title {
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+  }
 
   .product {
     height: 100%;
@@ -57,7 +66,6 @@
 
       .title {
         font-size: 24px;
-        // color: $color-primary;
       }
 
       .author {
@@ -193,5 +201,10 @@
         }
       }
     }
+  }
+
+  .content {
+    overflow-x: scroll;
+    padding: 0;
   }
 }

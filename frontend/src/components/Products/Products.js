@@ -15,7 +15,7 @@ import highlightMatch from "../../utils/highlightMatch";
 import { BsHeart } from "react-icons/bs";
 
 const Products = (props) => {
-  const { products, amount, title, columns, ratingMini } = props;
+  const { products, amount, columns, ratingMini } = props;
 
   const listAmount = products.filter((el, i) => (!amount ? el : i < amount && el));
 
@@ -31,9 +31,7 @@ const Products = (props) => {
 
   return (
     <section className={styles.products}>
-      {title ? <h2 className={styles["section-title"]}>{title}</h2> : <></>}
-
-      <div className={styles.list}>
+      <div className={styles.list} style={amount ? { flexWrap: "wrap" } : { flexWrap: "nowrap" }}>
         {listAmount.map((product, index) => {
           return (
             <div key={index} className={styles.card} style={{ flexBasis: `${100 / columns}%` }}>

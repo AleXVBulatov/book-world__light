@@ -2,33 +2,19 @@
 
 .products {
   flex: 1 1 100%;
-  // padding: 20px 0; // Здесь
-  // margin: 0 -10px;
-
-  .section-title {
-    padding: 20px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 700;
-  }
 
   .list {
     display: flex;
-    flex-wrap: wrap;
+    // flex-wrap: wrap; // Управляется из props компонента
     row-gap: 20px;
-    // padding: 0 0 0 40px;
     margin: 0 -10px;
 
     .card {
       display: flex;
       // flex-basis: 25%; // Управляется из props компонента
       flex-grow: 0;
-      flex-shrink: 1;
+      flex-shrink: 0;
       padding: 0 10px;
-
-      // &:last-child {
-      //   flex-grow: 0;
-      // }
 
       .content {
         display: flex;
@@ -116,6 +102,7 @@
                 color: #fff;
                 background-color: $color-primary;
                 transition: all 0.4s ease;
+                font-size: 14px;
 
                 &:hover {
                   background-color: $color-secondary;

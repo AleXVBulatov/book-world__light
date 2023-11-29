@@ -35,7 +35,12 @@ const MainLayout = () => {
 
       <div className="line"></div>
       <div className="container">
-        <Products products={list} amount={7} title="Вы просматривали" columns={7} ratingMini />
+        <div className={styles.haveSeen}>
+          <h2 className={styles["section-title"]}>Вы просматривали</h2>
+          <div className={styles.content}>
+            <Products products={list} amount={null} columns={7} ratingMini />
+          </div>
+        </div>
       </div>
 
       {/* <div id="footer"> */}

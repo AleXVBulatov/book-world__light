@@ -29,7 +29,10 @@ const SingleProduct = () => {
       <div className={styles.column}>
         <Product {...data} />
         <div className="line"></div>
-        <Products products={related} amount={5} title="Книги данного автора" columns={5} ratingMini />
+        <h2 className={styles["section-title"]}>Книги данного автора</h2>
+        <div className={styles.content}>
+          <Products products={related} amount={null} columns={5} ratingMini />
+        </div>
       </div>
     </>
   );
