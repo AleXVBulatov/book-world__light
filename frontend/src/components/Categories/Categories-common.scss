@@ -1,0 +1,44 @@
+@import "../../scss/variables.scss";
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  flex: 0 0 auto;
+  min-height: 100%;
+  padding: 30px 20px;
+
+  .title {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    color: $color-primary;
+  }
+
+  .link {
+    display: block;
+    padding: 10px 0px;
+    border: 1px solid $color-background;
+    border-radius: 5px;
+    color: $headerLinksColor;
+    transition: all 0.4s ease;
+
+    &:active {
+      color: $headerLinksColorActive;
+    }
+    &:hover {
+      background-color: #fff;
+    }
+    &::first-letter {
+      font-size: 1.4em;
+      font-weight: 500;
+    }
+  }
+
+  .activeLink {
+    margin-left: 10px;
+    padding: 10px 10px;
+    background-color: #fff;
+    font-weight: 500;
+  }
+}

@@ -1,32 +1,21 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useLocation, useParams } from "react-router-dom";
 
 import styles from "./Sidebar.module.scss";
-import { selectCategories } from "../../redux/categories/categoriesSlice";
+
+import Categories from "../Categories/Categories";
+import Filter from "../Filter/Filter";
 
 const Sidebar = () => {
-  const categories = useSelector(selectCategories);
+  const params = useParams();
+  const { pathname } = useLocation(); // /novelty
+  const isOnlyParamSlug = Object.keys(params);
 
   return (
     <section className={styles.sidebar}>
-      <div className={styles.block}>
-        <h2 className={styles.title}>Категории</h2>
-        <ul className={styles.list}>
-          {categories &&
-            categories.map((category) => {
-              return (
-                <li key={category.slug}>
-                  <NavLink
-                    to={`categories/${category.slug}`}
-                    className={({ isActive }) => `${styles.link} ${isActive ? styles.activeLink : ""}`}
-                  >
-                    {category.name}
-                  </NavLink>
-                </li>
-              );
-            })}
-        </ul>
+      <div className={styles.group}>
+        <Categories />
+        {(isOnlyParamSlug.length === 1 || pathname.slice(1) === "novelty") && <Filter />}
       </div>
     </section>
   );
