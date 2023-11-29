@@ -12,31 +12,51 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// для получения гатегорий:
+// для получения категорий:
 app.get("/categories", (req, res) => {
   res.sendFile(path.join(__dirname, "db", "categories.json"));
 });
 // для получения товаров с query params:
 app.get("/products", (req, res) => {
-  const param = req.query.title;
+  const searchTitle = req.query.title;
+  const searchCategorySlug = req.query.categorySlug;
+  const searchPriceMin = Number(req.query.price_min);
+  const searchPriceMax = Number(req.query.price_max);
 
   fs.readFile(path.join(__dirname, "db", "products.json"), "utf-8", (err, data) => {
     if (err) throw err;
 
     const list = JSON.parse(data);
 
-    const filtered = list.filter((product) => {
-      const title = product.title.toLowerCase();
-      const author = product.author.toLowerCase();
-      const result = `${title} ${author}`;
+    const filtered = list
+      // для поиска по названию:
+      .filter((product) => {
+        const title = product.title.toLowerCase();
+        const author = product.author.toLowerCase();
+        const result = `${title} ${author}`;
 
-      if (!param) {
-        return result;
-      } else {
-        const value = param.toLowerCase();
-        return result.includes(value);
-      }
-    });
+        if (!searchTitle) {
+          return result;
+        } else {
+          const value = searchTitle.toLowerCase();
+          return result.includes(value);
+        }
+      })
+      .filter((product) => {
+        // для поиска по категории:
+        if (!searchCategorySlug) return product;
+        return product.category.slug.toLowerCase() === searchCategorySlug.toLowerCase();
+      })
+      .filter((product) => {
+        // для поиска по min цене:
+        if (!searchPriceMin) return product;
+        return product.price >= searchPriceMin;
+      })
+      .filter((product) => {
+        // для поиска по max цене:
+        if (!searchPriceMax) return product;
+        return product.price <= searchPriceMax;
+      });
 
     res.send(JSON.stringify(filtered));
   });

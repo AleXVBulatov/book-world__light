@@ -3,7 +3,8 @@ import axios from "axios";
 
 const initialState = {
   list: [],
-  filtered: [],
+  // filtered: [], // не используется
+  filtered: {},
   related: [],
   isLoading: false,
 };
@@ -25,8 +26,11 @@ const productsSlice = createSlice({
   name: "products",
   initialState: initialState,
   reducers: {
-    filterByCategory: (state, action) => {
-      state.filtered = state.list.filter((product) => product.category.id === action.payload);
+    // filterByCategory: (state, action) => {
+    //   state.filtered = state.list.filter((product) => product.category.id === action.payload);
+    // },
+    getFilteredProducts: (state, action) => {
+      state.filtered = action.payload;
     },
     getRelatedProducts: (state, action) => {
       state.related = state.list.filter((product) => product.author === action.payload);
@@ -48,10 +52,12 @@ const productsSlice = createSlice({
   },
 });
 
-export const { filterByCategory, getRelatedProducts, getProduct } = productsSlice.actions;
+// export const { filterByCategory, getRelatedProducts, getProduct, getFilteredProducts } = productsSlice.actions;
+export const { getRelatedProducts, getProduct, getFilteredProducts } = productsSlice.actions;
 
 export const selectProducts = (state) => state.products.list;
-export const selectProductsfilterByCategory = (state) => state.products.filtered;
 export const selectProductsRelatedByAuthor = (state) => state.products.related;
+export const selectFilteredProducts = (state) => state.products.filtered;
+// export const selectProductsfilterByCategory = (state) => state.products.filtered;
 
 export default productsSlice.reducer;

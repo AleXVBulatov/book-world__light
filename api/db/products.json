@@ -10,7 +10,7 @@
       "https://cdn.pixabay.com/photo/2016/03/27/19/32/book-1283865_1280.jpg"
     ],
     "category": {
-      "id": "fiction",
+      "slug": "fiction",
       "name": "Художественная литература"
     },
     "other": {
@@ -41,7 +41,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://balka-book.com/files/2021/08_24/15_17/u_files_store_6_345.jpg"],
     "category": {
-      "id": "fiction",
+      "slug": "fiction",
       "name": "Художественная литература"
     },
     "other": {
@@ -72,7 +72,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://content2.rozetka.com.ua/goods/images/big/252848068.jpg"],
     "category": {
-      "id": "fiction",
+      "slug": "fiction",
       "name": "Художественная литература"
     },
     "other": {
@@ -103,7 +103,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://content2.rozetka.com.ua/goods/images/big/337429203.jpg"],
     "category": {
-      "id": "fiction",
+      "slug": "fiction",
       "name": "Художественная литература"
     },
     "other": {
@@ -134,7 +134,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://balka-book.com/files/2021/08_24/15_17/u_files_store_6_345.jpg"],
     "category": {
-      "id": "educational_literature",
+      "slug": "educational_literature",
       "name": "Художественная литература"
     },
     "other": {
@@ -165,7 +165,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://content2.rozetka.com.ua/goods/images/big/252848068.jpg"],
     "category": {
-      "id": "gift_editions",
+      "slug": "gift_editions",
       "name": "Художественная литература"
     },
     "other": {
@@ -196,7 +196,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://content2.rozetka.com.ua/goods/images/big/337429203.jpg"],
     "category": {
-      "id": "creator's_kit",
+      "slug": "creator's_kit",
       "name": "Художественная литература"
     },
     "other": {
@@ -227,7 +227,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://balka-book.com/files/2021/08_24/15_17/u_files_store_6_345.jpg"],
     "category": {
-      "id": "board_games",
+      "slug": "board_games",
       "name": "Художественная литература"
     },
     "other": {
@@ -258,7 +258,7 @@
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda voluptatum, obcaecati quas nobis quidem esse iusto sit voluptate asperiores maiores, tempora repellendus velit dolorem hic distinctio. Necessitatibus, dolorem! Quas distinctio deserunt voluptatem tempore, nam unde doloremque molestias fugit magni autem obcaecati earum sint explicabo! Ipsa, nostrum.",
     "images": ["https://content2.rozetka.com.ua/goods/images/big/252848068.jpg"],
     "category": {
-      "id": "e-books",
+      "slug": "e-books",
       "name": "Художественная литература"
     },
     "other": {
@@ -293,7 +293,7 @@
       "https://cdn.pixabay.com/photo/2016/03/27/19/32/book-1283865_1280.jpg"
     ],
     "category": {
-      "id": "children's_literature",
+      "slug": "children's_literature",
       "name": "Детская литература"
     },
     "other": {
@@ -328,7 +328,7 @@
       "https://cdn.pixabay.com/photo/2016/03/27/19/32/book-1283865_1280.jpg"
     ],
     "category": {
-      "id": "children's_literature",
+      "slug": "children's_literature",
       "name": "Детская литература"
     },
     "other": {
@@ -363,7 +363,7 @@
       "https://cdn.pixabay.com/photo/2016/03/27/19/32/book-1283865_1280.jpg"
     ],
     "category": {
-      "id": "children's_literature",
+      "slug": "children's_literature",
       "name": "Детская литература"
     },
     "other": {
