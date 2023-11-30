@@ -7,6 +7,8 @@ const initialState = {
   user: null,
   cart: [],
   favourite: [],
+  viewed: [],
+  filters: {},
   isLoading: false,
   showForm: false,
   formType: "login",
@@ -80,6 +82,16 @@ const userSlice = createSlice({
     setProductsAmountOnPage: (state, action) => {
       state.productsAmountOnPage = action.payload;
     },
+    getViewedProducts: (state, action) => {
+      const isFound = state.viewed.find((elem) => elem.id === action.payload.id);
+
+      if (!isFound) {
+        state.viewed.unshift(action.payload);
+      }
+    },
+    getFilters: (state, action) => {
+      state.filters = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
@@ -107,8 +119,17 @@ const userSlice = createSlice({
   },
 });
 
-export const { addToCart, addToFavourite, setProductsAmountOnPage, toggleForm, removeCurrentUser, toggleFormType, setMessage } =
-  userSlice.actions;
+export const {
+  addToCart,
+  getViewedProducts,
+  getFilters,
+  addToFavourite,
+  setProductsAmountOnPage,
+  toggleForm,
+  removeCurrentUser,
+  toggleFormType,
+  setMessage,
+} = userSlice.actions;
 
 export const selectCart = (state) => state.user.cart;
 export const selectForm = (state) => state.user.showForm;
@@ -116,6 +137,8 @@ export const selectFormType = (state) => state.user.formType;
 export const selectUser = (state) => state.user.user;
 export const selectMessage = (state) => state.user.message;
 export const selectProductsAmountOnPage = (state) => state.user.productsAmountOnPage;
+export const selectViewedProducts = (state) => state.user.viewed;
+export const selectFilters = (state) => state.user.filters;
 
 export default userSlice.reducer;
 

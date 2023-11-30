@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./Filter.module.scss";
 
-import { getFilteredProducts } from "../../redux/products/productsSlice";
+import { getFilters, selectFilters } from "../../redux/user/userSlice";
 
 const Filter = () => {
+  const dispatch = useDispatch();
+  const filters = useSelector(selectFilters);
+
   const defaultValues = {
-    title: "",
-    price_min: "",
-    price_max: "",
+    title: filters.title,
+    price_min: filters.price_min,
+    price_max: filters.price_max,
   };
 
   const [values, setValues] = useState({
     ...defaultValues,
   });
-
-  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -24,11 +25,11 @@ const Filter = () => {
   };
 
   const handleReset = () => {
-    setValues({ ...defaultValues });
+    setValues({ title: "", price_min: "", price_max: "" });
   };
 
   useEffect(() => {
-    dispatch(getFilteredProducts(values));
+    dispatch(getFilters(values));
   }, [dispatch, values]);
 
   return (

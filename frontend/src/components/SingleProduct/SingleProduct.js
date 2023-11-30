@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./SingleProduct.module.scss";
 
 import { selectProducts, selectProductsRelatedByAuthor, getRelatedProducts } from "../../redux/products/productsSlice";
+import { getViewedProducts } from "../../redux/user/userSlice";
 
 import Product from "./Product";
 import Products from "../Products/Products";
@@ -20,6 +21,7 @@ const SingleProduct = () => {
   useEffect(() => {
     if (!data) return;
     dispatch(getRelatedProducts(data.author));
+    dispatch(getViewedProducts(data));
   }, [dispatch, data]);
 
   return !data ? (

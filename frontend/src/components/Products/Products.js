@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./Products.module.scss";
 
 // import { filterByCategory, selectProducts } from "../../redux/products/productsSlice";
-import { selectFilteredProducts } from "../../redux/products/productsSlice";
+import { selectFilters } from "../../redux/user/userSlice";
 import { addToCart } from "../../redux/user/userSlice";
 
 import Rating from "../Raiting/Rating";
@@ -20,7 +20,7 @@ const Products = (props) => {
   const listAmount = products.filter((el, i) => (!amount ? el : i < amount && el));
 
   const dispatch = useDispatch();
-  const searchValue = useSelector(selectFilteredProducts).title;
+  const searchValue = useSelector(selectFilters).title;
 
   // const { slug } = useParams();
   // const selector = useSelector(selectProducts);
@@ -36,12 +36,12 @@ const Products = (props) => {
           return (
             <div key={index} className={styles.card} style={{ flexBasis: `${100 / columns}%` }}>
               <div className={styles.content}>
-                <Link to={`/categories/${product.category.slug}/${product.id}`} target="__blank" className={styles.image}>
+                <Link to={`/categories/${product.category.slug}/${product.id}`} className={styles.image}>
                   <img src={product.images[0]} alt={product.title} />
                 </Link>
 
                 <div className={styles.wrapper}>
-                  <Link to={`/categories/${product.category.slug}/${product.id}`} target="__blank" className={styles.description}>
+                  <Link to={`/categories/${product.category.slug}/${product.id}`} className={styles.description}>
                     <h2 className={styles.title}>{highlightMatch(product.title, searchValue)}</h2>
                     <h3 className={styles.author}>{highlightMatch(product.author, searchValue)}</h3>
                     <p className={styles.price}>{product.price} ₴</p>

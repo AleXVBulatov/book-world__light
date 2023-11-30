@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import styles from "./MainLayout.module.scss";
 
-import { selectProducts } from "../redux/products/productsSlice";
+import { selectViewedProducts } from "../redux/user/userSlice";
 
 import Header from "../components/Header/Header.js";
 import Footer from "../components/Footer/Footer.js";
@@ -14,7 +14,7 @@ import Products from "../components/Products/Products.js";
 import UserForm from "../components/User/UserForm.js";
 
 const MainLayout = () => {
-  const list = useSelector(selectProducts);
+  const list = useSelector(selectViewedProducts);
 
   return (
     <div className={styles.wrapper}>
@@ -35,12 +35,14 @@ const MainLayout = () => {
 
       <div className="line"></div>
       <div className="container">
-        <div className={styles.haveSeen}>
-          <h2 className={styles["section-title"]}>Вы просматривали</h2>
-          <div className={styles.content}>
-            <Products products={list} amount={null} columns={7} ratingMini />
+        {!!list.length && (
+          <div className={styles.haveSeen}>
+            <h2 className={styles["section-title"]}>Вы просматривали</h2>
+            <div className={styles.content}>
+              <Products products={list} amount={null} columns={7} ratingMini />
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* <div id="footer"> */}

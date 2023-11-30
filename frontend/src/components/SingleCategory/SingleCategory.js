@@ -5,15 +5,20 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./SingleCategory.module.scss";
 
 import { useGetProductsQuery } from "../../redux/api/apiSlice";
-import { selectFilteredProducts } from "../../redux/products/productsSlice";
-import { setProductsAmountOnPage, selectProductsAmountOnPage } from "../../redux/user/userSlice";
+import {
+  setProductsAmountOnPage,
+  selectProductsAmountOnPage,
+  selectViewedProducts,
+  selectFilters,
+} from "../../redux/user/userSlice";
 
 import Category from "./Category";
 
 const SingleCategory = () => {
   const { slug } = useParams();
-  const filters = useSelector(selectFilteredProducts);
+  const filters = useSelector(selectFilters);
   const amount = useSelector(selectProductsAmountOnPage);
+  const viewed = useSelector(selectViewedProducts);
   const dispatch = useDispatch();
   // const amount = 4;
 
@@ -40,7 +45,7 @@ const SingleCategory = () => {
   useEffect(() => {
     setItems(amount);
     dispatch(setProductsAmountOnPage(value));
-  }, [slug, amount, dispatch, value]);
+  }, [slug, amount, dispatch, value, viewed]);
 
   return isLoading ? (
     <div className={styles.preloader}>Loading...авава</div>
