@@ -9,14 +9,14 @@ const Filter = () => {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
 
-  const defaultValues = {
-    title: filters.title,
-    price_min: filters.price_min,
-    price_max: filters.price_max,
+  const storageValues = {
+    title: filters.title || "",
+    price_min: filters.price_min || "",
+    price_max: filters.price_max || "",
   };
 
   const [values, setValues] = useState({
-    ...defaultValues,
+    ...storageValues,
   });
 
   const handleChange = (event) => {

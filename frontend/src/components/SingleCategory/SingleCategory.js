@@ -57,7 +57,10 @@ const SingleCategory = () => {
     <div className={styles.column}>
       <Category products={data} isLoading isSuccess />
 
-      <div className={styles["filter-amount"]}>
+      <div
+        className={styles["filter-amount"]}
+        style={items <= data.length ? { justifyContent: "space-between" } : { justifyContent: "flex-end" }}
+      >
         <button
           type="button"
           onClick={addMoreFunction}
