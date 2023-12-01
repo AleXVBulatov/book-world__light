@@ -6,7 +6,7 @@ import styles from "./Products.module.scss";
 
 // import { filterByCategory, selectProducts } from "../../redux/products/productsSlice";
 import { selectFilters } from "../../redux/user/userSlice";
-import { addToCart } from "../../redux/user/userSlice";
+import { addToCart, addToFavourites } from "../../redux/user/userSlice";
 
 import Rating from "../Raiting/Rating";
 import RatingMini from "../RatingMini/RatingMini";
@@ -67,13 +67,19 @@ const Products = (props) => {
                       <button
                         type="click"
                         className={`${styles["btn-buy"]} ${!product.qty && styles["btn-disabled"]}`}
-                        onClick={() => dispatch(addToCart(product))}
+                        onClick={() => dispatch(addToCart({ book: { ...product } }))}
                         disabled={!product.qty}
                       >
                         Купить
                       </button>
 
-                      <button type="click" className={styles["icon-favourite"]} onClick={() => {}}>
+                      <button
+                        type="click"
+                        className={styles["icon-favourite"]}
+                        onClick={() => {
+                          dispatch(addToFavourites(product));
+                        }}
+                      >
                         <BsHeart size={16} />
                       </button>
                     </div>

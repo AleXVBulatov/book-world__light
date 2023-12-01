@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import styles from "./SingleProduct.module.scss";
 
-import { addToCart, addToFavourite } from "../../redux/user/userSlice";
+import { addToCart, addToFavourites } from "../../redux/user/userSlice";
 
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import Rating from "../Raiting/Rating";
@@ -99,7 +99,7 @@ const Product = (props) => {
                 className={styles["icon-favourite"]}
                 onClick={() => {
                   setToggleFavourite(!toggleFavourite);
-                  dispatch(addToFavourite(product));
+                  dispatch(addToFavourites(product));
                 }}
               >
                 {toggleFavourite ? <BsHeartFill size={16} /> : <BsHeart size={16} />}
@@ -107,7 +107,8 @@ const Product = (props) => {
               <button
                 type="click"
                 className={`${styles["btn-buy"]} ${!product.qty && styles["btn-disabled"]}`}
-                onClick={() => dispatch(addToCart(product))}
+                // onClick={() => dispatch(addToCart(product))}
+                onClick={() => dispatch(addToCart({ book: { ...product } }))}
                 disabled={!product.qty}
               >
                 Купить

@@ -6,7 +6,7 @@ import { BASE_URL } from "../../utils/constants";
 const initialState = {
   user: null,
   cart: [],
-  favourite: [],
+  favourites: [],
   viewed: [],
   filters: {},
   isLoading: false,
@@ -48,24 +48,32 @@ const userSlice = createSlice({
   initialState: initialState,
   reducers: {
     addToCart: (state, action) => {
-      const newCart = [...state.cart];
-      const found = newCart.find((prod) => prod.book.id === action.payload.id);
+      let newCart = [...state.cart];
+      const found = newCart.find((prod) => prod.book.id === action.payload.book.id);
+
       if (found) {
-        newCart.forEach((prod) => {
-          return prod.book.id === action.payload.id ? { ...prod, quantity: prod.quantity++ || action.payload.quantity } : prod;
+        newCart = newCart.map((prod) => {
+          return prod.book.id === action.payload.book.id
+            ? { ...prod, quantity: !action.payload.quantity ? prod.quantity + 1 : action.payload.quantity }
+            : prod;
         });
       } else {
-        newCart.push({ book: action.payload, quantity: 1 });
+        newCart.push({ ...action.payload, quantity: 1 });
       }
       state.cart = newCart;
     },
-    addToFavourite: (state, action) => {
-      const foundIndex = state.favourite.findIndex((book) => book.id === action.payload.id);
-      if (!state.favourite.length) {
-        state.favourite.push(action.payload);
+    removeFromCart: (state, action) => {
+      state.cart = state.cart.filter((item) => item.book.id !== action.payload);
+    },
+    addToFavourites: (state, action) => {
+      let newFavourites = [...state.favourites];
+      const found = state.favourites.find((book) => book.id === action.payload.id);
+      if (!found) {
+        newFavourites.push(action.payload);
       } else {
-        state.favourite.splice(foundIndex, 1);
+        newFavourites = newFavourites.filter((item) => item.id !== action.payload.id);
       }
+      state.favourites = newFavourites;
     },
     toggleForm: (state, action) => {
       state.showForm = action.payload;
@@ -121,9 +129,10 @@ const userSlice = createSlice({
 
 export const {
   addToCart,
+  removeFromCart,
   getViewedProducts,
   getFilters,
-  addToFavourite,
+  addToFavourites,
   setProductsAmountOnPage,
   toggleForm,
   removeCurrentUser,
@@ -166,3 +175,17 @@ export default userSlice.reducer;
 //       })
 //     : state.cart.push({ book: action.payload, quantity: 1 });
 // }
+
+// addToCart: (state, action) => {
+//   console.log(action.payload);
+//   const newCart = [...state.cart];
+//   const found = newCart.find((prod) => prod.book.id === action.payload.id);
+//   if (found) {
+//     newCart.forEach((prod) => {
+//       return prod.book.id === action.payload.id ? { ...prod, quantity: prod.quantity++ || action.payload.quantity } : prod;
+//     });
+//   } else {
+//     newCart.push({ book: action.payload, quantity: 1 });
+//   }
+//   state.cart = newCart;
+// },

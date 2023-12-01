@@ -10,3 +10,11 @@ export const buildUrl = (url, params) => {
 
   return urlWithParams;
 };
+
+export const calcTotalPrice = (arr) => {
+  return arr.reduce((acc, cur) => {
+    const { book, quantity } = cur;
+
+    return acc + book.price * quantity;
+  }, 0);
+};

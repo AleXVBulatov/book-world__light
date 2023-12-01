@@ -18,6 +18,7 @@ import Service from "../../pages/Service/Service";
 import SingleProduct from "../SingleProduct/SingleProduct";
 import SingleCategory from "../SingleCategory/SingleCategory.js";
 import Profile from "../Profile/Profile";
+import Cart from "../Cart/Cart.js";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
           <Route path={ROUTES.CATEGORY} element={<SingleCategory />} />
           <Route path={ROUTES.PRODUCT} element={<SingleProduct />} />
           <Route path={ROUTES.PROFILE} element={<Profile />} />
+          <Route path={ROUTES.CART} element={<Cart />} />
 
           <Route path={ROUTES.NOVELTY} element={<Novelty />} />
           <Route path={ROUTES.ABOUT} element={<About />} />

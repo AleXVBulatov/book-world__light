@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./Header.module.scss";
 import ROUTES from "../../utils/routes";
 import logo from "../../images/logo/logo-header.png";
-import { toggleForm, selectUser } from "../../redux/user/userSlice";
+import { toggleForm, selectUser, selectCart } from "../../redux/user/userSlice";
 
 import { BsSearch, BsTelephone, BsHeart, BsCart } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
@@ -16,6 +16,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentUser = useSelector(selectUser);
+  const cart = useSelector(selectCart);
   const [searchValue, setSearchValue] = useState("");
 
   const handleChange = (event) => {
@@ -71,8 +72,8 @@ const Header = () => {
                     <span className={styles.count}>01</span>
                   </Link>
                   <Link to={ROUTES.CART} className={styles.groups}>
-                    <BsCart size={20} />
-                    <span className={styles.count}>99</span>
+                    <BsCart size={22} />
+                    {!!cart.length && <span className={styles.count}>{cart.length}</span>}
                   </Link>
 
                   <div className={styles.login}>
@@ -83,7 +84,7 @@ const Header = () => {
                           dispatch(toggleForm(true));
                         }}
                       >
-                        <PiUserLight size={34} />
+                        <PiUserLight size={28} />
                       </div>
                     ) : (
                       <div
