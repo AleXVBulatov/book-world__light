@@ -7,6 +7,7 @@
   flex: 0 0 auto;
   min-height: 100%;
   padding: 30px 20px;
+  background-color: $color-background;
 
   .title {
     margin-bottom: 20px;
@@ -17,7 +18,8 @@
 
   .link {
     display: block;
-    padding: 10px 0px;
+    margin: 0 -10px;
+    padding: 10px 10px;
     border: 1px solid $color-background;
     border-radius: 5px;
     color: $headerLinksColor;

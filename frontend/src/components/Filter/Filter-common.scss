@@ -6,7 +6,6 @@
 
   .content {
     padding: 30px 20px;
-    // border-bottom: 10px solid $color-background;
 
     .title {
       margin-bottom: 20px;
@@ -33,15 +32,12 @@
       justify-content: space-between;
       column-gap: 10px;
       max-width: 100%;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
 
       .filter-price {
-        // flex: 0 0 200px;
         width: 100%;
 
         span {
-          // font-style: italic;
-          // font-weight: 500;
         }
 
         input {
@@ -54,9 +50,25 @@
       }
     }
 
+    .filter-stock {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      input {
+        width: 14px;
+        height: 14px;
+      }
+      label {
+        align-items: 14px;
+        margin-left: 10px;
+      }
+    }
+
     button {
       width: 100%;
       height: 30px;
+      margin-top: 20px;
       border-radius: 5px;
       background-color: rgb(199, 90, 90);
       color: #fff;
@@ -64,6 +76,40 @@
       &:hover {
         background-color: rgb(189, 0, 0);
       }
+    }
+  }
+}
+
+.filter-amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 20px;
+
+  .btn-more {
+    flex: 0 0 150px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    align-self: center;
+    width: 10%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: $color-secondary;
+    color: #fff;
+    transition: all 0.4s ease;
+
+    &:hover {
+      background-color: #ff7b29;
+    }
+  }
+
+  .group {
+    flex: 0 0 auto;
+
+    select {
+      cursor: pointer;
     }
   }
 }

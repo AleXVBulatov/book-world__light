@@ -1,0 +1,39 @@
+@import "../../scss/variables.scss";
+
+.list {
+  width: 100%;
+
+  .filter-amount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 20px;
+
+    .btn-more {
+      flex: 0 0 150px;
+      margin-left: 50%;
+      transform: translateX(-50%);
+      align-self: center;
+      width: 10%;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      background-color: $color-secondary;
+      color: #fff;
+      transition: all 0.4s ease;
+
+      &:hover {
+        background-color: #ff7b29;
+      }
+    }
+
+    .group {
+      flex: 0 0 auto;
+
+      select {
+        cursor: pointer;
+      }
+    }
+  }
+}

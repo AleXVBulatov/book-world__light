@@ -13,7 +13,9 @@ const initialState = {
   showForm: false,
   formType: "login",
   message: "",
-  productsAmountOnPage: 8,
+  productsAmountOnPage: 4,
+  productsQuantityOnPage: 4,
+  currentSlug: "",
 };
 
 export const createUser = createAsyncThunk("user/createUser", async (data, thunkApi) => {
@@ -90,15 +92,24 @@ const userSlice = createSlice({
     setProductsAmountOnPage: (state, action) => {
       state.productsAmountOnPage = action.payload;
     },
+    setProductsQuantityOnPage: (state, action) => {
+      state.productsQuantityOnPage = action.payload;
+    },
     getViewedProducts: (state, action) => {
       const isFound = state.viewed.find((elem) => elem.id === action.payload.id);
 
       if (!isFound) {
         state.viewed.unshift(action.payload);
+      } else {
+        state.viewed = state.viewed.filter((item) => item.id !== action.payload.id);
+        state.viewed.unshift(action.payload);
       }
     },
     getFilters: (state, action) => {
       state.filters = action.payload;
+    },
+    setCurrentSlug: (state, action) => {
+      state.currentSlug = action.payload;
     },
   },
 
@@ -134,6 +145,8 @@ export const {
   getFilters,
   addToFavourites,
   setProductsAmountOnPage,
+  setProductsQuantityOnPage,
+  setCurrentSlug,
   toggleForm,
   removeCurrentUser,
   toggleFormType,
@@ -146,6 +159,8 @@ export const selectFormType = (state) => state.user.formType;
 export const selectUser = (state) => state.user.user;
 export const selectMessage = (state) => state.user.message;
 export const selectProductsAmountOnPage = (state) => state.user.productsAmountOnPage;
+export const selectProductsQuantityOnPage = (state) => state.user.productsQuantityOnPage;
+export const selectCurrentSlug = (state) => state.user.currentSlug;
 export const selectViewedProducts = (state) => state.user.viewed;
 export const selectFilters = (state) => state.user.filters;
 
