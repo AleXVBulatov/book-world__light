@@ -18,3 +18,7 @@ export const calcTotalPrice = (arr) => {
     return acc + book.price * quantity;
   }, 0);
 };
+
+export const isVavourite = (arr, id) => {
+  return arr.find((item) => item.id === id);
+};

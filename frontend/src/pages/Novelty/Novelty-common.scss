@@ -1,6 +1,8 @@
 @import "../../scss/variables.scss";
 
-.list {
+.column {
+  // display: flex;
+  // flex-direction: column;
   width: 100%;
 
   .filter-amount {

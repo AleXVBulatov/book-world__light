@@ -14,7 +14,7 @@ const initialState = {
   formType: "login",
   message: "",
   productsAmountOnPage: 4,
-  productsQuantityOnPage: 4,
+  productsQuantityOnPage: 4, // вкл
   currentSlug: "",
 };
 
@@ -71,7 +71,7 @@ const userSlice = createSlice({
       let newFavourites = [...state.favourites];
       const found = state.favourites.find((book) => book.id === action.payload.id);
       if (!found) {
-        newFavourites.push(action.payload);
+        newFavourites.unshift(action.payload);
       } else {
         newFavourites = newFavourites.filter((item) => item.id !== action.payload.id);
       }
@@ -154,6 +154,7 @@ export const {
 } = userSlice.actions;
 
 export const selectCart = (state) => state.user.cart;
+export const selectFavourites = (state) => state.user.favourites;
 export const selectForm = (state) => state.user.showForm;
 export const selectFormType = (state) => state.user.formType;
 export const selectUser = (state) => state.user.user;

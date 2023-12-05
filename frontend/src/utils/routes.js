@@ -1,7 +1,7 @@
 const ROUTES = {
   HOME: "/",
   CART: "cart",
-  FAVOURITE: "favourite",
+  FAVOURITES: "favourites",
   PROFILE: "profile",
   CATEGORY: "categories/:slug",
   PRODUCT: "categories/:slug/:id",
