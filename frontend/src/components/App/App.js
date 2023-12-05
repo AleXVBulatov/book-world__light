@@ -7,7 +7,9 @@ import ROUTES from "../../utils/routes";
 
 import { fetchCategories } from "../../redux/categories/categoriesSlice.js";
 import { fetchProducts } from "../../redux/products/productsSlice";
-import { BASE_URL } from "../../utils/constants";
+
+import products from "../../data/products.json";
+import categories from "../../data/categories.json";
 
 import MainLayout from "../../layouts/MainLayout";
 import Home from "../../pages/Home/Home";
@@ -25,8 +27,8 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCategories(`${BASE_URL}/categories`));
-    dispatch(fetchProducts(`${BASE_URL}/products`));
+    dispatch(fetchCategories(categories));
+    dispatch(fetchProducts(products));
   }, [dispatch]);
 
   return (
@@ -51,3 +53,7 @@ function App() {
 }
 
 export default App;
+
+// import { BASE_URL } from "../../utils/constants";
+// dispatch(fetchCategories(`${BASE_URL}/categories`));
+// dispatch(fetchProducts(`${BASE_URL}/products`));

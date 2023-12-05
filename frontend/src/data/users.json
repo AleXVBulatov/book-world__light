@@ -1,0 +1,26 @@
+[
+  {
+    "email": "eugene@gmail.com",
+    "password": "19901989",
+    "name": "Eugene",
+    "avatar": "https://scontent.fods2-1.fna.fbcdn.net/v/t39.30808-6/233518317_879567252996080_3492622618664100948_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=i221-5xJDFcAX_QMYyS&_nc_ht=scontent.fods2-1.fna&oh=00_AfBmibZqKv-7XvVkZkc5W4Vx49As-Z5w676w5yDNsv6MXw&oe=6564BDA6",
+    "id": "40cf104a-d745-4db1-8d8d-3c0ddeecab97",
+    "role": "costomer"
+  },
+  {
+    "email": "alex@gmail.com",
+    "password": "1989",
+    "name": "Alexey",
+    "avatar": "https://avatars.githubusercontent.com/u/113911034?v=4",
+    "id": "dddece7f-4fae-423b-9349-b2672f71b9ac",
+    "role": "costomer"
+  },
+  {
+    "email": "olga@gmail.com",
+    "password": "1993",
+    "name": "Olga",
+    "avatar": "https://media.licdn.com/dms/image/D4D03AQGsUCSqXY0njA/profile-displayphoto-shrink_800_800/0/1690031584604?e=1706140800&v=beta&t=evxvFMzaYCfUIXve8d6Z9OBUl0WnTM9rVNYTJaTr54k",
+    "id": "6f5bd69e-6fbb-46dc-9c0a-de022c70dc14",
+    "role": "costomer"
+  }
+]
