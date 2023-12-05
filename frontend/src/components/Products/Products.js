@@ -6,13 +6,14 @@ import styles from "./Products.module.scss";
 
 // import { filterByCategory, selectProducts } from "../../redux/products/productsSlice";
 import { selectFilters } from "../../redux/user/userSlice";
-import { addToCart, addToFavourites } from "../../redux/user/userSlice";
+import { addToCart, addToFavourites, selectFavourites } from "../../redux/user/userSlice";
+import { isVavourite } from "../../utils/common";
 
 import Rating from "../Raiting/Rating";
 import RatingMini from "../RatingMini/RatingMini";
 import highlightMatch from "../../utils/highlightMatch";
 
-import { BsHeart } from "react-icons/bs";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 
 const Products = (props) => {
   const { products, amount, columns, ratingMini } = props;
@@ -21,6 +22,7 @@ const Products = (props) => {
 
   const dispatch = useDispatch();
   const searchValue = useSelector(selectFilters).title;
+  const favourites = useSelector(selectFavourites);
 
   // const { slug } = useParams();
   // const selector = useSelector(selectProducts);
@@ -80,7 +82,7 @@ const Products = (props) => {
                           dispatch(addToFavourites(product));
                         }}
                       >
-                        <BsHeart size={16} />
+                        {!isVavourite(favourites, product.id) ? <BsHeart size={16} /> : <BsHeartFill size={16} />}
                       </button>
                     </div>
                   </div>

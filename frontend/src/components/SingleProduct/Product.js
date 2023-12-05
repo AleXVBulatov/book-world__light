@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./SingleProduct.module.scss";
 
-import { addToCart, addToFavourites } from "../../redux/user/userSlice";
+import { addToCart, addToFavourites, selectFavourites } from "../../redux/user/userSlice";
+import { isVavourite } from "../../utils/common";
 
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import Rating from "../Raiting/Rating";
-import { useDispatch } from "react-redux";
 
 const Product = (props) => {
   const product = props;
   const [currentTab, setCurrentTab] = useState("description");
   const [currentImage, setCurrentImage] = useState();
-  const [toggleFavourite, setToggleFavourite] = useState(false);
+  const favourites = useSelector(selectFavourites);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -98,16 +99,14 @@ const Product = (props) => {
                 type="click"
                 className={styles["icon-favourite"]}
                 onClick={() => {
-                  setToggleFavourite(!toggleFavourite);
                   dispatch(addToFavourites(product));
                 }}
               >
-                {toggleFavourite ? <BsHeartFill size={16} /> : <BsHeart size={16} />}
+                {!isVavourite(favourites, product.id) ? <BsHeart size={16} /> : <BsHeartFill size={16} />}
               </button>
               <button
                 type="click"
                 className={`${styles["btn-buy"]} ${!product.qty && styles["btn-disabled"]}`}
-                // onClick={() => dispatch(addToCart(product))}
                 onClick={() => dispatch(addToCart({ book: { ...product } }))}
                 disabled={!product.qty}
               >

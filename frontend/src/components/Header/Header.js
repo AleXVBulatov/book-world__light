@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./Header.module.scss";
 import ROUTES from "../../utils/routes";
 import logo from "../../images/logo/logo-header.png";
-import { toggleForm, selectUser, selectCart } from "../../redux/user/userSlice";
+import { toggleForm, selectUser, selectCart, selectFavourites } from "../../redux/user/userSlice";
 
 import { BsSearch, BsTelephone, BsHeart, BsCart } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
@@ -17,6 +17,7 @@ const Header = () => {
   const navigate = useNavigate();
   const currentUser = useSelector(selectUser);
   const cart = useSelector(selectCart);
+  const favourites = useSelector(selectFavourites);
   const [searchValue, setSearchValue] = useState("");
 
   const handleChange = (event) => {
@@ -67,9 +68,9 @@ const Header = () => {
 
               <div className={styles.account}>
                 <div className={styles.row}>
-                  <Link to={ROUTES.FAVOURITE} className={styles.groups}>
+                  <Link to={ROUTES.FAVOURITES} className={styles.groups}>
                     <BsHeart size={20} />
-                    <span className={styles.count}>01</span>
+                    {!!favourites.length && <span className={styles.count}>{favourites.length}</span>}
                   </Link>
                   <Link to={ROUTES.CART} className={styles.groups}>
                     <BsCart size={22} />
