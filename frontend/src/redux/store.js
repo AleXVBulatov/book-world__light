@@ -3,7 +3,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import categoryReducer from "./categories/categoriesSlice";
 import productsReducer from "./products/productsSlice";
 import userSlice from "./user/userSlice";
-import { apiSlice } from "./api/apiSlice";
+import filtersReducer from "./filters/filtersSlice";
 
 // Для работы localStorage:
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
@@ -13,14 +13,13 @@ const rootReducer = combineReducers({
   categories: categoryReducer,
   products: productsReducer,
   user: userSlice,
-
-  [apiSlice.reducerPath]: apiSlice.reducer,
+  filters: filtersReducer,
 });
 
 const persistConfig = {
   key: "user",
   storage,
-  whitelist: ["user"],
+  whitelist: ["user", "filters"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -33,7 +32,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(apiSlice.middleware),
+    }),
 });
 
 export const persistor = persistStore(store);
@@ -53,10 +52,8 @@ export default store;
 //     categories: categoryReducer,
 //     products: productsReducer,
 //     user: userSlice,
-
-//     [apiSlice.reducerPath]: apiSlice.reducer, // не использую!!
+//     filters: filtersSlice,
 //   },
-//   middleware: (getMiddleware) => getMiddleware().concat(apiSlice.middleware), // не использую!!
 // });
 
 // export default store;

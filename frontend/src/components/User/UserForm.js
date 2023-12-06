@@ -2,7 +2,15 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import styles from "./UserForm.module.scss";
-import { selectForm, toggleForm, toggleFormType, selectFormType, selectMessage } from "../../redux/user/userSlice";
+import {
+  selectForm,
+  toggleForm,
+  toggleFormType,
+  selectFormType,
+  selectMessage,
+  setMessage,
+  selectCreatedUsers,
+} from "../../redux/user/userSlice";
 
 import UserLoginForm from "./UserLoginForm";
 import UserSignupForm from "./UserSignupForm";
@@ -13,9 +21,11 @@ const UserForm = () => {
   const showForm = useSelector(selectForm);
   const currentForm = useSelector(selectFormType);
   const message = useSelector(selectMessage);
+  const createdUsers = useSelector(selectCreatedUsers);
 
   const closeForm = () => {
     dispatch(toggleForm(!showForm));
+    dispatch(setMessage(""));
   };
 
   const changeFormType = (type) => {
@@ -41,9 +51,9 @@ const UserForm = () => {
               }}
             />
             {currentForm === "login" ? (
-              <UserLoginForm changeFormType={changeFormType} closeForm={closeForm} />
+              <UserLoginForm changeFormType={changeFormType} closeForm={closeForm} createdUsers={createdUsers} />
             ) : (
-              <UserSignupForm changeFormType={changeFormType} />
+              <UserSignupForm changeFormType={changeFormType} createdUsers={createdUsers} />
             )}
             {message && <div className={styles.message}>{message}</div>}
           </div>

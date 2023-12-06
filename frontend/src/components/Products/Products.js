@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./Products.module.scss";
 
-// import { filterByCategory, selectProducts } from "../../redux/products/productsSlice";
-import { selectFilters } from "../../redux/user/userSlice";
+import { selectFilters } from "../../redux/filters/filtersSlice";
 import { addToCart, addToFavourites, selectFavourites } from "../../redux/user/userSlice";
 import { isVavourite } from "../../utils/common";
 
@@ -23,13 +22,6 @@ const Products = (props) => {
   const dispatch = useDispatch();
   const searchValue = useSelector(selectFilters).title;
   const favourites = useSelector(selectFavourites);
-
-  // const { slug } = useParams();
-  // const selector = useSelector(selectProducts);
-
-  // useEffect(() => {
-  //   dispatch(filterByCategory(slug));
-  // }, [dispatch, slug, selector?.length]);
 
   return (
     <section className={styles.products}>

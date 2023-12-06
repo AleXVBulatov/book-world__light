@@ -1,27 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import styles from "./SearchBox.module.scss";
 
 import highlightMatch from "../../utils/highlightMatch";
 
-import { useGetProductsQuery } from "../../redux/api/apiSlice.js";
+import { selectProducts } from "../../redux/products/productsSlice";
 
 const SearchBox = (props) => {
   const { searchValue, setSearchValue } = props;
+  const data = useSelector(selectProducts);
 
-  const { data, isLoading } = useGetProductsQuery({ title: searchValue });
+  const filteredData = data.filter((product) => {
+    const prodTitles = product.title.toLowerCase();
+    const prodAuthors = product.author.toLowerCase();
+    const result = `${prodTitles} ${prodAuthors}`;
 
-  // console.log(data);
+    const value = searchValue.toLowerCase();
+    return result.includes(value);
+  });
 
-  return isLoading ? (
+  return !filteredData ? (
     <span>Loading</span>
-  ) : !data.length ? (
+  ) : !filteredData.length ? (
     <div className={styles.result}>По вашему запросу ничего не найдено</div>
   ) : (
     <div className={styles.wrapper}>
       <ul className={styles.list}>
-        {data.map((product) => {
+        {filteredData.map((product) => {
           return (
             <Link
               to={`categories/${product.category.slug}/${product.id}`}

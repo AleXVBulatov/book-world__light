@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./App.module.scss";
 import ROUTES from "../../utils/routes";
 
 import { fetchCategories } from "../../redux/categories/categoriesSlice.js";
 import { fetchProducts } from "../../redux/products/productsSlice";
+import { setCreatedUsers, selectCreatedUsers } from "../../redux/user/userSlice";
 
 import products from "../../data/products.json";
 import categories from "../../data/categories.json";
+import user from "../../data/users.json";
 
 import MainLayout from "../../layouts/MainLayout";
 import Home from "../../pages/Home/Home";
@@ -25,11 +27,15 @@ import Favourites from "../Favourites/Favourites.js";
 
 function App() {
   const dispatch = useDispatch();
+  const selector = useSelector(selectCreatedUsers);
 
   useEffect(() => {
     dispatch(fetchCategories(categories));
     dispatch(fetchProducts(products));
-  }, [dispatch]);
+    if (!selector.length) {
+      dispatch(setCreatedUsers(user[0]));
+    }
+  }, [dispatch, selector]);
 
   return (
     <div className={styles.app}>
@@ -53,7 +59,3 @@ function App() {
 }
 
 export default App;
-
-// import { BASE_URL } from "../../utils/constants";
-// dispatch(fetchCategories(`${BASE_URL}/categories`));
-// dispatch(fetchProducts(`${BASE_URL}/products`));

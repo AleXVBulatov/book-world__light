@@ -2,17 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./UserForm.module.scss";
-import { selectUser, loginUser, selectMessage } from "../../redux/user/userSlice";
+import { selectUser, loginUser, selectMessage, setMessage, selectCreatedUsers } from "../../redux/user/userSlice";
+import usersFromDB from "../../data/users.json";
 
 const UserLoginForm = (props) => {
-  const { changeFormType, closeForm } = props;
+  const { changeFormType, closeForm, createdUsers } = props;
   const dispatch = useDispatch();
   const currentUser = useSelector(selectUser);
   const message = useSelector(selectMessage);
+  const DEVELOPER = useSelector(selectCreatedUsers);
+
+  console.log(DEVELOPER);
 
   const [values, setValues] = useState({
-    email: "",
-    password: "",
+    email: "" || DEVELOPER[0].email,
+    password: "" || DEVELOPER[0].password,
   });
   const { email, password } = values;
 
@@ -29,7 +33,17 @@ const UserLoginForm = (props) => {
       password,
     };
 
-    dispatch(loginUser(data));
+    const foundUser =
+      createdUsers.find((user) => user.email === data.email) || usersFromDB.find((user) => user.email === data.email);
+
+    if (!foundUser) {
+      dispatch(setMessage("Неверное имя пользователя или пароль"));
+    } else if (foundUser.email !== data.email || foundUser.password !== data.password) {
+      dispatch(setMessage("Неверное имя пользователя или пароль"));
+    } else if (foundUser.email === data.email && foundUser.password === data.password) {
+      dispatch(loginUser(foundUser));
+      dispatch(setMessage(""));
+    }
   };
 
   useEffect(() => {

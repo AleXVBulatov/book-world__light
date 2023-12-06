@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./Profile.module.scss";
 
-import { selectUser, removeCurrentUser, updateUser } from "../../redux/user/userSlice";
+import { selectUser, removeCurrentUser, selectCreatedUsers, setUpdateUser } from "../../redux/user/userSlice";
 import { IoMdClose } from "react-icons/io";
 
 const Profile = () => {
@@ -17,6 +17,7 @@ const Profile = () => {
     avatar: "",
   });
   const currentUser = useSelector(selectUser);
+  const createdUsers = useSelector(selectCreatedUsers);
   const { email, password, name, avatar } = values;
 
   useEffect(() => {
@@ -46,7 +47,18 @@ const Profile = () => {
       id: currentUser.id,
     };
 
-    dispatch(updateUser(updatedUser));
+    const foundUser = createdUsers.find((user) => user.email === updatedUser.email);
+
+    if (foundUser) {
+      const updateUser = {
+        ...foundUser,
+        ...updatedUser,
+      };
+
+      dispatch(setUpdateUser(updateUser));
+    }
+
+    // dispatch(updateUser(updatedUser));
   };
 
   return !currentUser ? (

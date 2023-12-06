@@ -1,54 +1,25 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-
-import { BASE_URL } from "../../utils/constants";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
   cart: [],
   favourites: [],
   viewed: [],
-  filters: {},
   isLoading: false,
   showForm: false,
   formType: "login",
   message: "",
-  productsAmountOnPage: 4,
-  productsQuantityOnPage: 4, // вкл
   currentSlug: "",
+  createdUsers: [],
 };
-
-export const createUser = createAsyncThunk("user/createUser", async (data, thunkApi) => {
-  try {
-    const res = await axios.post(`${BASE_URL}/users/signup`, data);
-    return res.data;
-  } catch (error) {
-    return thunkApi.rejectWithValue(error);
-  }
-});
-
-export const loginUser = createAsyncThunk("user/loginUser", async (data, thunkApi) => {
-  try {
-    const res = await axios.post(`${BASE_URL}/users/login`, data);
-    return res.data;
-  } catch (error) {
-    return thunkApi.rejectWithValue(error);
-  }
-});
-
-export const updateUser = createAsyncThunk("user/updateUser", async (data, thunkApi) => {
-  try {
-    const res = await axios.patch(`${BASE_URL}/users/${data.id}`, data);
-    return res.data;
-  } catch (error) {
-    return thunkApi.rejectWithValue(error);
-  }
-});
 
 const userSlice = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
+    loginUser: (state, action) => {
+      state.user = action.payload;
+    },
     addToCart: (state, action) => {
       let newCart = [...state.cart];
       const found = newCart.find((prod) => prod.book.id === action.payload.book.id);
@@ -89,12 +60,6 @@ const userSlice = createSlice({
     removeCurrentUser: (state, action) => {
       state.user = action.payload;
     },
-    setProductsAmountOnPage: (state, action) => {
-      state.productsAmountOnPage = action.payload;
-    },
-    setProductsQuantityOnPage: (state, action) => {
-      state.productsQuantityOnPage = action.payload;
-    },
     getViewedProducts: (state, action) => {
       const isFound = state.viewed.find((elem) => elem.id === action.payload.id);
 
@@ -105,52 +70,31 @@ const userSlice = createSlice({
         state.viewed.unshift(action.payload);
       }
     },
-    getFilters: (state, action) => {
-      state.filters = action.payload;
-    },
     setCurrentSlug: (state, action) => {
       state.currentSlug = action.payload;
     },
-  },
-
-  extraReducers: (builder) => {
-    builder.addCase(createUser.fulfilled, (state, action) => {
-      if (action.payload === "Такой пользователь уже есть") {
-        state.message = action.payload;
-      } else {
-        state.message = action.payload;
-      }
-    });
-
-    builder.addCase(loginUser.fulfilled, (state, action) => {
-      if (action.payload === "Неверное имя пользователя или пароль") {
-        state.message = action.payload;
-      } else if (typeof action.payload === "object") {
-        state.user = action.payload;
-        state.message = "";
-      }
-    });
-
-    builder.addCase(updateUser.fulfilled, (state, action) => {
-      console.log(action.payload);
+    setCreatedUsers: (state, action) => {
+      state.createdUsers.push(action.payload);
+    },
+    setUpdateUser: (state, action) => {
       state.user = action.payload;
-    });
+    },
   },
 });
 
 export const {
+  loginUser,
   addToCart,
   removeFromCart,
   getViewedProducts,
-  getFilters,
   addToFavourites,
-  setProductsAmountOnPage,
-  setProductsQuantityOnPage,
   setCurrentSlug,
   toggleForm,
   removeCurrentUser,
   toggleFormType,
   setMessage,
+  setCreatedUsers,
+  setUpdateUser,
 } = userSlice.actions;
 
 export const selectCart = (state) => state.user.cart;
@@ -159,10 +103,8 @@ export const selectForm = (state) => state.user.showForm;
 export const selectFormType = (state) => state.user.formType;
 export const selectUser = (state) => state.user.user;
 export const selectMessage = (state) => state.user.message;
-export const selectProductsAmountOnPage = (state) => state.user.productsAmountOnPage;
-export const selectProductsQuantityOnPage = (state) => state.user.productsQuantityOnPage;
 export const selectCurrentSlug = (state) => state.user.currentSlug;
 export const selectViewedProducts = (state) => state.user.viewed;
-export const selectFilters = (state) => state.user.filters;
+export const selectCreatedUsers = (state) => state.user.createdUsers;
 
 export default userSlice.reducer;

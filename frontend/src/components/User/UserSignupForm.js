@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 import styles from "./UserForm.module.scss";
-import { createUser, selectMessage, setMessage } from "../../redux/user/userSlice";
+
+import { setCreatedUsers, selectMessage, setMessage } from "../../redux/user/userSlice";
+import usersFromDB from "../../data/users.json";
 
 const UserSignupForm = (props) => {
-  const { changeFormType } = props;
+  const { changeFormType, createdUsers } = props;
   const dispatch = useDispatch();
   const message = useSelector(selectMessage);
 
@@ -36,7 +39,21 @@ const UserSignupForm = (props) => {
       avatar,
     };
 
-    dispatch(createUser(newUser));
+    const foundUser =
+      createdUsers.find((user) => user.email === newUser.email) || usersFromDB.find((user) => user.email === newUser.email);
+
+    if (!foundUser) {
+      const createdUser = {
+        ...newUser,
+        id: uuidv4(),
+        role: "costomer",
+      };
+
+      dispatch(setMessage("Профиль создан"));
+      dispatch(setCreatedUsers(createdUser));
+    } else {
+      dispatch(setMessage("Такой пользователь уже есть"));
+    }
   };
 
   useEffect(() => {
