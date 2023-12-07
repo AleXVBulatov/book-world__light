@@ -8,7 +8,7 @@ const initialState = {
   categorySlug: null,
   offset: 0,
   limit: 0,
-  productsAmountOnPage: 4,
+  productsAmountOnPage: 8,
 };
 
 const filtersSlice = createSlice({
