@@ -47,7 +47,7 @@ const Profile = () => {
       id: currentUser.id,
     };
 
-    const foundUser = createdUsers.find((user) => user.email === updatedUser.email);
+    const foundUser = createdUsers.find((user) => user.id === updatedUser.id);
 
     if (foundUser) {
       const updateUser = {
