@@ -12,8 +12,6 @@ const UserLoginForm = (props) => {
   const message = useSelector(selectMessage);
   const DEVELOPER = useSelector(selectCreatedUsers);
 
-  console.log(DEVELOPER);
-
   const [values, setValues] = useState({
     email: "" || DEVELOPER[0].email,
     password: "" || DEVELOPER[0].password,

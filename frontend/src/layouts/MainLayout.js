@@ -6,12 +6,12 @@ import styles from "./MainLayout.module.scss";
 
 import { selectViewedProducts } from "../redux/user/userSlice";
 
-import Header from "../components/Header/Header.js";
-import Footer from "../components/Footer/Footer.js";
-import Navigation from "../components/Navigation/Navigation.js";
-import Sidebar from "../components/Sidebar/Sidebar.js";
-import Products from "../components/Products/Products.js";
-import UserForm from "../components/User/UserForm.js";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import Navigation from "../components/Navigation/Navigation";
+import Sidebar from "../components/Sidebar/Sidebar";
+import Products from "../components/Products/Products";
+import UserForm from "../components/User/UserForm";
 
 const MainLayout = () => {
   const list = useSelector(selectViewedProducts);
